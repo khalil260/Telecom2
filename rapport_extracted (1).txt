@@ -1,0 +1,1765 @@
+PAGES: 80
+
+
+===== PAGE 1 =====
+R´epublique Tunisienne
+Minist`ere de l’Enseignement Sup´erieur et de la Recherche Scientifique
+Univ´ersit´e Ibn Khaldoun
+Rapport de Projet de Fin d’´Etudes
+En vue de l’obtention du diplˆome de
+Licence en Business Intelligence
+D´eveloppement d’un syst`eme de recommandation d’offres
+bas´e sur l’apprentissage automatique
+Organisme d’accueil :
+Tunisie T´el´ecom
+´Elabor´e par :
+Fatma Zghal
+Mohamed Aziz Chelbi
+Encadr´e par :
+Enc. P ´edagogique
+Mr Haithem HELALI
+Mme Amal Jlassi
+Enc. Professionnel
+Mr Rafik Amri
+Ann´ee Universitaire
+2024/2025
+
+===== PAGE 2 =====
+D´EDICACES
+`A mes chers parents
+`A mes chers parents, pour leur amour inconditionnel et leur soutien ind´efectible tout
+au long de ce parcours. Merci d’avoir toujours cru en moi et de m’avoir inspir´e `a
+donner le meilleur de moi-mˆeme. Votre confiance en moi et vos sacrifices ont ´et´e les
+fondements de ma r´eussite, et je vous en suis profond´ement reconnaissant.
+A ma ch`ere soeur
+`A ma ch`ere sœur, complice de mes joies et soutien dans mes ´epreuves, merci d’ˆetre
+toujours l`a avec ton amour inconditionnel.
+`A ma binˆome
+`A ma ch`ere binˆome de projet, merci pour ton soutien constant, ta cr´eativit´e et ta
+pers´ev´erance. Ce projet n’aurait pas´et´e le mˆeme sans toi.
+Aziz
+i
+
+===== PAGE 3 =====
+D´EDICACES
+`A mes chers parents
+Aux meilleurs parents que l’on puisse avoir, merci pour votre amour inconditionnel,
+votre soutien et vos encouragements constants. Vous avez toujours ´et´e pr´esents `a
+chaque ´etape de mon parcours. Je vous suis profond´ement reconnaissante pour tout
+ce que vous avez fait pour moi.
+`A ma ch`ere soeur
+`A ma ch`ere soeur, merci pour votre soutien. tu es une source de bonheur dans ma
+vie.
+`A mon binˆome
+`A mon cher binˆome, je te remercie sinc`erement d’avoir rendu chaque collaboration un
+succ`es et d’avoir´et´e une source constante d’apprentissage pour moi.
+Fatma
+ii
+
+===== PAGE 4 =====
+REMERCIEMENTS
+Nous souhaitons d’abord exprimer notre gratitude envers Dieu pour nous avoir ac-
+cord´e la patience et la force n ´ecessaires pour mener `a bien ce travail, ainsi que le
+courage de surmonter tous les obstacles que nous avons rencontr´es. Sans l’assistance
+de Dieu le Tout-Puissant, nous n’aurions pas r´eussi `a accomplir tout cela.
+Tunisie T ´el´ecom m ´erite nos remerciements pour l’accueil chaleureux que nous
+avons rec ¸u au sein de son´equipe et pour nous avoir donn ´e l’opportunit´e de travailler
+sur ce projet dans un environnement professionnel enrichissant. Un merci particulier
+`a Mr. Rafik Amri, notre encadrant au sein de l’entreprise, pour ses conseils avis´es, sa
+disponibilit´e et son accompagnement tout au long de cette exp´erience.
+Nous voulons ´egalement exprimer notre gratitude envers Mme Amal Jlassi et M.
+Haithem Helali , nos superviseurs p ´edagogiques, pour leur suivi, leurs recommanda-
+tions pr´ecieuses et leur encouragement constant tout au long de ce travail.
+Nous saisissons cette occasion pour exprimer notre reconnaissance envers l’ensemble
+des enseignants de l’Universit´e Ibn Khaldoun qui ont consacr ´e leur temps `a offrir une
+formation de qualit´e tout au long de ces ann´ees d’´etudes.
+Nous tenons `a remercier, finalement, tous les membres du jury qui ont accept ´e de
+juger humblement ce travail.
+iii
+
+===== PAGE 5 =====
+TABLE DES MATI`ERES
+1 Cadre G ´en´erale de projet 1
+Introduction . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . 1
+1.1 Cadre du projet . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . 1
+1.2 Organisme d’acceuil . . . . . . . . . . . . . . . . . . . . . . . . . . . . . 1
+1.2.1 Pr ´esentation de l’organisme d’acceuil . . . . . . . . . . . . . . . 2
+1.2.2 Historique . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . 2
+1.2.3 Organigramme de Tunisie Telecom . . . . . . . . . . . . . . . . . 4
+1.3 Contexte G ´en´erale . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . 5
+1.4 Etude de l’existant . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . 5
+1.4.1 Syt `eme de gestion des offres actuel . . . . . . . . . . . . . . . . 6
+1.4.2 Limites de l’approche actuel . . . . . . . . . . . . . . . . . . . . . 6
+1.5 Choix de la m ´ethodologie de travail . . . . . . . . . . . . . . . . . . . . . 7
+1.5.1 M ´ethode GIMSI . . . . . . . . . . . . . . . . . . . . . . . . . . . . 7
+1.5.2 M ´ethode CRISP-DM . . . . . . . . . . . . . . . . . . . . . . . . . 10
+1.5.3 Etapes cl ´es de la m´ethodologie CRISP-DM . . . . . . . . . . . . 11
+1.5.4 Comparaison entre les m ´ethodologies CRISP-DM et GIMSI . . . 12
+Conclusion . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . 14
+2 Sp ´ecification des Besoins et sp´ecifications des donn´ees 15
+Introduction . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . 15
+iv
+
+===== PAGE 6 =====
+2.1 Analyse et specification des Besoins . . . . . . . . . . . . . . . . . . . . 16
+2.1.1 Besoins Fonctionnels . . . . . . . . . . . . . . . . . . . . . . . . 16
+2.1.2 Besoins Non Fonctionnels . . . . . . . . . . . . . . . . . . . . . . 17
+2.2 Technologies utilis ´ees . . . . . . . . . . . . . . . . . . . . . . . . . . . . 18
+2.2.1 Environnement mat ´eriel . . . . . . . . . . . . . . . . . . . . . . . 18
+2.2.2 Environnement logiciel . . . . . . . . . . . . . . . . . . . . . . . . 18
+2.2.3 Environnement technique de la solution BI . . . . . . . . . . . . 21
+2.2.4 Choix de languages . . . . . . . . . . . . . . . . . . . . . . . . . 23
+2.3 Identification des tables de dimensions et du table faits . . . . . . . . . . 24
+2.3.1 Identification des tables faits . . . . . . . . . . . . . . . . . . . . 24
+2.3.2 Identification des tables de dimensions . . . . . . . . . . . . . . 30
+Conclusion . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . 34
+3 Compr ´ehension et pr´eparation Des Donn´ees 35
+Introduction . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . 35
+3.1 Compr ´ehension des donn´ees . . . . . . . . . . . . . . . . . . . . . . . . 35
+3.1.1 Business Intelligence . . . . . . . . . . . . . . . . . . . . . . . . 36
+3.1.2 Collecte initiale des donn ´ees . . . . . . . . . . . . . . . . . . . . 37
+3.1.3 Description des donn ´ees . . . . . . . . . . . . . . . . . . . . . . 37
+3.2 V ´erification de la qualit´e des donn´ees . . . . . . . . . . . . . . . . . . . 37
+3.3 Pr ´eparation des donn´ees . . . . . . . . . . . . . . . . . . . . . . . . . . 38
+3.3.1 Configuration de la source de donn ´ees . . . . . . . . . . . . . . 38
+3.3.2 Flux de controle . . . . . . . . . . . . . . . . . . . . . . . . . . . 40
+3.3.3 T ˆaches de flux de donn´ees . . . . . . . . . . . . . . . . . . . . . 40
+3.3.4 Extraction des donn ´ees . . . . . . . . . . . . . . . . . . . . . . . 41
+3.4 Transformation des donn ´ees . . . . . . . . . . . . . . . . . . . . . . . . 42
+3.4.1 Comportement des composants SSIS . . . . . . . . . . . . . . . 42
+3.4.2 Exemples d’utilisation des composants SSIS pour la transforma-
+tion des donn´ees . . . . . . . . . . . . . . . . . . . . . . . . . . . 43
+Conclusion . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . 46
+v
+
+===== PAGE 7 =====
+4 Visualisation et pr ´ediction de donn´ees 47
+Introduction . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . 47
+4.0.1 Mod `ele en constellation : . . . . . . . . . . . . . . . . . . . . . . 48
+4.0.2 Page d’authentification . . . . . . . . . . . . . . . . . . . . . . . . 48
+4.0.3 Mod `eles de donn´ees de Power BI . . . . . . . . . . . . . . . . . 49
+4.0.4 Page des tableaux de bords . . . . . . . . . . . . . . . . . . . . . 50
+4.0.5 Description de la page d’accueil . . . . . . . . . . . . . . . . . . 50
+4.0.6 Suivi global de la consommation . . . . . . . . . . . . . . . . . . 51
+4.0.7 tableau de bord d’analyse le comportement individuel des client 53
+4.0.8 Analyse des forfaits . . . . . . . . . . . . . . . . . . . . . . . . . 54
+4.0.9 Revenus et rentabilit ´e . . . . . . . . . . . . . . . . . . . . . . . . 56
+4.0.10 Les mod `eles de classifications . . . . . . . . . . . . . . . . . . . 57
+4.0.11 Pr ´eparation des donn´ees pour la classification . . . . . . . . . . 58
+4.0.12 Les M ´etriques d’´evaluation . . . . . . . . . . . . . . . . . . . . . 59
+4.0.13 ´evaluation et Interpr´etation des r´esultats . . . . . . . . . . . . . . 61
+4.0.14 Int ´erpr `etation . . . . . . . . . . . . . . . . . . . . . . . . . . . . . 65
+Conclusion . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . 66
+Conclusion G´en´erale . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . 67
+R´ef`erence . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . 69
+vi
+
+===== PAGE 8 =====
+LISTE DES FIGURES
+1.1 Organigramme de Tunisie Telecom . . . . . . . . . . . . . . . . . . . . . 4
+1.2 M ´ethodologie GIMSI . . . . . . . . . . . . . . . . . . . . . . . . . . . . . 7
+1.3 M ´ethodologie CRISP-DM . . . . . . . . . . . . . . . . . . . . . . . . . . 10
+2.1 Diagramme de cas d’utilisation . . . . . . . . . . . . . . . . . . . . . . . 17
+2.2 Logo visual code . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . 19
+2.3 Logo visual studio . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . 19
+2.4 Logo SQL . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . 20
+2.5 Google Colab . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . 20
+2.6 Lgo SQL Server/SSMS Logos . . . . . . . . . . . . . . . . . . . . . . . . 21
+2.7 SSIS . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . 22
+2.8 Power BI . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . 22
+2.9 Logo Streamlit . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . 23
+3.1 Architecture technique de la solution BI . . . . . . . . . . . . . . . . . . 36
+3.2 Etablir une connexion entre Visual Studio et SQL Server . . . . . . . . . 39
+3.3 Test de la connexion . . . . . . . . . . . . . . . . . . . . . . . . . . . . . 39
+3.4 Illustration du flux de contr ˆole pour l’alimentation de la table fait Con-
+sommation Client . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . 40
+3.5 Illustration du flux de don ´ees de la tˆache Consommation Client . . . . . 41
+3.6 Chargement de source de donn ´ees . . . . . . . . . . . . . . . . . . . . 42
+vii
+
+===== PAGE 9 =====
+3.7 Flux de donn ´ee pour le chargement de la ”Dimension Client” . . . . . . 44
+3.8 Flux de donn ´ees d’utilisation de don´ees . . . . . . . . . . . . . . . . . . 45
+3.9 T ˆache de flux de donn´ees de consommation Hebdomad´eres . . . . . . 45
+3.10 Table de la base de donn´ees . . . . . . . . . . . . . . . . . . . . . . . . 46
+4.1 Mod `ele en constellation . . . . . . . . . . . . . . . . . . . . . . . . . . . 48
+4.2 Interface Login . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . 49
+4.3 Sch ´ema en ´etoile . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . 49
+4.4 Interface des tabeaux de bords . . . . . . . . . . . . . . . . . . . . . . . 50
+4.5 Tableau de bord suivi global de la consommation . . . . . . . . . . . . . 51
+4.6 Analyse de comportement des clients . . . . . . . . . . . . . . . . . . . 53
+4.7 Tableau de bord d’analyse de forfaits . . . . . . . . . . . . . . . . . . . . 55
+4.8 Revenus et rentabilit ´e . . . . . . . . . . . . . . . . . . . . . . . . . . . . 56
+4.9 Mod ´ele Random Forest . . . . . . . . . . . . . . . . . . . . . . . . . . . 62
+4.10 Mod ´ele ADABOOST . . . . . . . . . . . . . . . . . . . . . . . . . . . . . 63
+4.11 Mod `eles XGBOOST . . . . . . . . . . . . . . . . . . . . . . . . . . . . . 64
+viii
+
+===== PAGE 10 =====
+LISTE DES TABLES
+1.1 short . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . 8
+1.2 Comparaison entre les m ´ethodologies CRISP-DM et GIMSI . . . . . . . 12
+2.1 R ˆoles et objectifs des parties prenantes du syst `eme de recommandation 15
+2.2 Table fait de consommation client . . . . . . . . . . . . . . . . . . . . . . 24
+2.3 Table fait des activations de forfaits NOV/DEC . . . . . . . . . . . . . . . 28
+2.4 Table fait weekly data NOV/DEC/JANV (Consommation Hebdomadaire) 29
+2.5 Table de dimension Consommation Internet . . . . . . . . . . . . . . . . 30
+2.6 Table de dimension telephone et appel . . . . . . . . . . . . . . . . . . . 31
+2.7 Table de dimension SMS . . . . . . . . . . . . . . . . . . . . . . . . . . 31
+2.8 Table de dimension Client . . . . . . . . . . . . . . . . . . . . . . . . . . 31
+2.9 Table de dimension forfaits et recharges . . . . . . . . . . . . . . . . . . 32
+2.10 Table de dimension activit´e entrante . . . . . . . . . . . . . . . . . . . . 32
+2.11 Table de dimension Indicateur financi´ere . . . . . . . . . . . . . . . . . . 32
+2.12 Table de dimension forfaits . . . . . . . . . . . . . . . . . . . . . . . . . 33
+2.13 Table de dimension SESSION . . . . . . . . . . . . . . . . . . . . . . . . 33
+3.1 Comportement des composants SSIS . . . . . . . . . . . . . . . . . . . 43
+ix
+
+===== PAGE 11 =====
+CHAPITRE 1
+CADRE G ´EN´ERALE DE PROJET
+Introduction
+Le motif de cette pr ´esentation g ´en´erale est de situer le projet dans son environ-
+nement organisationnel et contextuel. Ce chapitre introductif a pour objectif de pr´esenter
+l’organisme d’accueil Tunisie T´el´ecom, l’analyse de l’existant, la solution d´ecisionnelle
+r´epondant aux probl ´ematiques de l’existant ainsi que la m ´ethode suivie pour r ´ealiser
+ce projet.
+1.1 Cadre du projet
+Ce projet de fin d’ ´etudes repr ´esente l’acte terminal du cursus de formation en
+Licence en Business Intelligence (BI) au sein de l’Universit ´e Ibn Khaldoun (UIK).Le
+pr´esent travail d´eroul´ee au sein de la soci´et´e Tunisie T´el´ecom.
+1.2 Organisme d’acceuil
+Dans cette partie nous fournissons une pr ´esentation de l’entreprise d’accueil, in-
+cluant son historique, sa fiche signal ´etique, son organigramme ainsi que la direction
+1
+
+===== PAGE 12 =====
+centrale des finances et la direction revenue assurance ou notre stage s’est d´eroul´e
+1.2.1 Pr ´esentation de l’organisme d’acceuil
+Tunisie T´el´ecom est l’op´erateur historique des t ´el´ecommunications en Tunisie, of-
+frant une large gamme de services, tels que la t ´el´ephonie fixe, mobile, l‘internet haut
+d´ebit et les solutions professionnelles. Gr ˆace `a son infrastructure moderne et `a son
+engagement envers l’innovation, l’entreprise joue un rˆole cl ´e dans la transformation
+num´erique du pays. En alliant performance, qualit´e et proximit´e, Tunisie T´el´ecom con-
+tinue de r ´epondre aux besoins de ses clients tout en contribuant au d ´eveloppement
+des technologies de l’information et de la communication en Tunisie.
+1.2.2 Historique
+• 17 Avril 1995 :Promulgation de la loi N°36 portant cr ´eation de l’Office National
+des T´el´ecommunications, d´enomm´e Tunisie T´el´ecom.
+• 20 mars 1998 : Inauguration de la premi `ere ligne GSM.
+• 17 Mai : Attribution de la premi `ere licence de t´el´ephone mobile en Mauritanie au
+consortium Mattel (d ´etenue `a 51)
+• 2002:Restructuration de Tunisie T ´el´ecom en soci ´et´e Anonyme et une premi `ere
+connexion ADSL .
+• 27 Avril 2006:T´el´ecom Dubai partenaire strat ´egique de Tunisie T´el´ecom.
+• 2006 :1`ere connexion fibre optique.
+• Juin 2011: Lancement de la 3G.
+• Juin 2016:Lancement de la 4G et L ’acquisition de GO MALTA.
+• 2020:1ere test 5G en Tunisie.
+2
+
+===== PAGE 13 =====
+• 2022:1er projet Zones Blanches finalis ´e (connecter au r ´eseau t ´el´ephonique et
+internet 164 ´ecoles ,59 centres de sant ´e de base et 180.000 habitants dans 94
+secteurs r´epartis sur 47 d ´el´egations dans 15 gouvernorats).
+LA VISION
+simplifier le quotidien de tous les Tunisiens en acc´el´erant l’adoption du tr`es haut d ´ebit
+et la transformation digitale de la soci´et´e tunisienne.
+LA MISSION
+ˆEtre le premier choix de connectivit ´e pour les m ´enages ,les jeunes et les entreprises.
+Offrir une meilleure vie connect´ee `a tous et partout en Tunisie en apportant une exp´erience
+utilisateur attrayante,simple et instantan´ee.
+LES VALEUR
+“FREE sont nos valeurs: faire simple, Responsabilit ´e, Esprit D’´equipe, Engagement”
+FAIRE SIMPLE
+R´efl´echir et agir de mani `ere `a simplifier les processus et agir plus rapidement et ef-
+ficacement. c’est le moyen de s’adapter `a s’adapter `a cet environnement complexe
+pouss´e par l’acc´el´eration du digital et adapter une posture Agile.
+Faire simple veut dire aussi ´eliminer toute tˆache inutile et sans valeur ajout´ee.
+3
+
+===== PAGE 14 =====
+1.2.3 Organigramme de Tunisie Telecom
+Figure 1.1: Organigramme de Tunisie Telecom
+L ’organigramme de Tunisie Telecome est un outil essentiel pour clarifier les relations
+et les liens au sein de l’entreprise ,facilitent ainsi la communication et la compr´ehension
+de la structure organisationnelle .Cette repr´esentation visuelle donn´ee par la figure 1.1
+montre les diff ´erents partie de l’entreprise et les relations entre elles, ce qui permet
+aux employ ´es de mieux comprendre leur r ˆole et leur place au sein de l’organisme.
+–Direction G ´en´erale Adjointe(DGA) –Direction Centrale Financi `ere (D. C.F):est une
+entit´e charg ´ee de g ´erer les finances ,la comptabilit ´e et l’administration . –Direction
+Centrale Commerciale et Marketing (D.C.C.M):est de superviser les ventes ,le chiffre
+4
+
+===== PAGE 15 =====
+d’affaires et le processus de marketing. –Direction Centrale Ressources Humaine
+(D.C.R.H):se concentre sur la gestion du recrutement ,de l’int´egration et de la formation
+du personnel ,la gestion administrative et la paie ,ainsi que la communication interne.
+–Direction Centrale Solution d’Entreprise:(D.C.S.E):est charg´ee de r ´ealiser les ´etudes
+,l’installation et la maintenance des r´eseaux priv´es . –Direction Centrale des syst`emes
+d’information (D.C.S.I):cette unit´e s’occupe de la mise en œuvre de l’infrastructure in-
+formatique et de r´eseaux s´ecuris´es de l’entreprise ainsi que des solutions IT.
+1.3 Contexte G ´en´erale
+Tunisise Telecom, en tant qu’op´erateur national de premier plan, cherche `a inclure
+l’intelligence artificielle, en particulier l’apprentissage automatique, dans ses proces-
+sus de prise de d ´ecision. Dans cette d ´emarche de transformation num ´erique, l’ajout
+d’un syst`eme de recommandation d’offres personnalis´e vise `a offrir `a chaque client la
+meilleure offre en fonction de ses besoins et de ses habitudes d’utilisation.
+Ce projet de fin d’´etudes implique la conception et le d ´eveloppement d’un moteur
+de recommandation intelligent capable d’analyser les donn´ees comportementales des
+utilisateurs( historique d’utilisation, pr ´ef´erence, habitudes de consommation ) Dans
+le but de leur offrir des services pour optimiser leurs actions marketing et commer-
+ciales, en ciblant de mani`ere plus pr´ecise leurs campagnes et en r´eduisant les taux de
+d´esabonnement.
+1.4 Etude de l’existant
+L ’´etude de l’existant constitue une ´etape essentielle dans la mise en place d’un
+syst`eme de recommandation performant.Cette phrase offre une compr ´ehension ap-
+profondie des m ´ecanismes actuels de gestion des offres commerciales et de recom-
+mandation chez Tunisie Telecom, en comprenant les lacunes du syst`eme actuel et en
+proposant des solutions adapt´ees bas´ees sur les nouvelles technologies.
+5
+
+===== PAGE 16 =====
+1.4.1 Syt `eme de gestion des offres actuel
+Actuellement, les offres commerciales de Tunisie Telecom sont d´efinies en fonction
+de segment de client`ele pr´eetablis, reposant principalement sur des crit`eres g´en´eraux
+tels que :
+• Le type d’abonnement ( pr´epay´e ou postpay´e ).
+• Le profil de consommation ( voix, data, mixte).
+• La r´egion g´eographique
+• Le revenu estim´e du client.
+Ensuite, les clients peuvent acc ´eder `a ces offres via divers canaux tels que les SMS,
+les notifications, les agents commerciaux et l’espace client.
+1.4.2 Limites de l’approche actuel
+Mˆeme si le volume de donn´ees collect´ees quotidiennement est important, diverses
+limites ont ´et´e identifi´ees :
+Faible personnalisation : Les recommandations reposent sur des r `egles simples
+ou des campagnes globales, sans tenir compte des comportements individuels des
+utilisateurs.
+Manque de r ´eactivit´e : L ’analyse des donn ´ees est souvent manuelle ou semi-
+automatis´ee, ce qui ralentit la mise en œuvre de nouvelles strat ´egies commerciales.
+Sous-exploitation des donn ´ees : Il y a un manque d’exploration approfondie de
+nombreux points de donn ´ees (transactions, navigation, habitudes de recharge, his-
+torique d’appels/data) pour cr´eer de la valeur.
+Absence de syst `emes pr ´edictifs : Il n’existe pas actuellement de mod `ele capable
+d’anticiper les besoins futurs des clients en fonction de leur comportement pass´e.
+6
+
+===== PAGE 17 =====
+1.5 Choix de la m ´ethodologie de travail
+Le choix de la m ´ethodologie de travail est une ´etape tr `es importante et assez
+d´elicate dans la r ´eussite d’un projet .Pour ce fait, il est n ´ecessaire d’analyser les
+diff´erentes options disponibles pour choisir la plus adapt´ee. Parmi les m´ethodes disponibles,
+nous citons notamment :
+– La m´ethode GIMSI [1]
+–La m´ethode CRISP-DM [2]
+1.5.1 M ´ethode GIMSI
+Figure 1.2: M ´ethodologie GIMSI
+7
+
+===== PAGE 18 =====
+GIMSI est une m ´ethode collaborative de conception du syst `eme de pilotage, qui
+joue un r ˆole essentiel dans le domaine professionnel .Cette m ´ethodologie ´etablit les
+crit`eres de r ´eussite d’un projet BI comme pr´esent´e dans la figure 1.2. La signification
+de l’acronyme GIMSI est la suivante:
+–G´en´eralisation: on peut appliquer cette m ´ethode dans divers domaines (administra-
+tion ,marketing ,production) et par toutes sortes d’organisations(PME,associations,grandes
+entreprises).
+–Information:L ’acc`es `a l’information ad´equate est essentiel pour prendre des d´ecisions.
+–M´ethode et mesure: La m ´ethode GIMSI repose sur le principe de la mesure.
+–Syst`eme et Syst´emique:La m´ethode vise `a cr´eer un syst`eme d’information d´ecisionnel
+qui s’int`egre au syst`eme d’information de l’entreprise.
+-Individualit´e et Initiative :La m ´ethode favorise l’ind´ependance des individus afin de
+promouvoir la prise d’initiative.
+La m´ethode est structur´ee en 4 ´etapes qui regroupent 10 ´etapes, comme indiqu´e dans
+le tableau 1.1:
+Table 1.1: Phases, ´etapes et objectifs de la m´ethodologie GIMSI
+Identification
+1 Environnement
+de l’entreprise
+Analyse de l’environnement
+´economique et de la strat´egie de
+l’entreprise afin de d´efinir le
+p´erim`etre et la port ´ee du projet.
+2 Identification de
+l’entreprise
+Analyse des structures de
+l’entreprise pour identifier le
+processus, les activit´es et les
+acteurs concern´es.
+Conception 3 D ´efinition des
+objectifs
+S´election des objectifs tactiques
+de chaque ´equipe.
+Phases N ´Etapes Objectifs
+8
+
+===== PAGE 19 =====
+Table 1.1: Phases, ´etapes et objectifs de la m´ethodologie GIMSI
+4 Conception du
+tableau de bord
+D´efinition du tableau de bord de
+chaque ´equipe.
+5 Choix des
+indicateurs
+Choix des indicateurs en
+fonction des objectifs choisis.
+6 Collecte des
+informations
+Identification des informations
+n´ecessaires `a la construction
+des indicateurs.
+7 Syst `eme de
+tableau de bord
+Construction du syst`eme de
+tableau de bord, contrˆole de la
+coh´erence globale.
+Mise en
+œuvre
+8 Choix des
+progiciels
+´Elaboration de la grille de
+s´election pour le choix de
+progiciels ad´equats.
+9 Int ´egration et
+d´eploiement de
+la solution
+Implantation des progiciels et
+d´eploiement dans l’entreprise.
+Suivi
+permanent
+10 Audit du
+syst`eme
+Suivi permanent du syst`eme.
+Phases N ´Etapes Objectifs
+9
+
+===== PAGE 20 =====
+1.5.2 M ´ethode CRISP-DM
+Figure 1.3: M ´ethodologie CRISP-DM
+Le CRISP-DM fait r ´ef´erence `a un processus intersectoriel pour Data Mining. La
+m´ethode CRISP-DM offre une m´ethode organis´ee pour ´elaborer une strat´egie d’exploration
+de donn ´ees comme ce pr ´esente dans la figure 1.3. C’est une approche solide et
+exp´eriment´ee. Nous n’en avons aucune revendication. Il n’a pas´et´e invent´e pour nous.
+C’est utilis´e lorsqu’il s’agit d’utiliser l’analytique pour r´esoudre des probl`emes commer-
+ciaux complexes. Il s’agit de la trame principale qui traverse pratiquement tous les
+engagements clients. Ce mod `ele correspond `a une succession id ´eale d’´ev´enements
+dans la r ´ealit´e de nombreuses t ˆaches peuvent ˆetre r ´ealis´ees dans un ordre diff ´erent
+et il sera souvent n ´ecessaire de revenir sur des t ˆaches ant ´erieures et de r ´ep´eter cer-
+taines actions.
+10
+
+===== PAGE 21 =====
+1.5.3 Etapes cl ´es de la m´ethodologie CRISP-DM
+Cette m´ethodologie est repartie en six ´etapes qui sont :
+Etape 1 : Compr ´ehension du besoin du client (business understanding )
+- D´eterminer les objectifs commerciaux et les exigences.
+- Identifier les contraintes, les avantages attendus et les ressources n´ecessaires.
+- D´efinir les probl`emes `a r´esoudre et les crit`eres de succession.
+Etape 2 : Compr ´ehension des donn´ees (data understanding)
+- Collecter, explorer et ´evaluer les donn´ees disponibles.
+- Analyser la structure, la qualit´e, la pertinence et la disponibilit ´e des donn´ees.
+- Identifier les valeurs manquantes et les erreurs potentielles.
+Etape 3 : Pr ´eparation des donn´ees
+– S´electionner les variables et les ´echantillons pertinents.
+– Nettoyer et transformer les donn ´ees (gestion des valeurs manquantes, cr ´eation de
+variables d´eriv´ee).
+– Int´egrer les diff´erentes sources de donn´ees pour cr´eer un ensemble coh´erent.
+Etape 4 : Mod ´elisation (modeling)
+– Construire des mod`eles pr´edictifs ou descriptifs en fonction des objectifs.
+– Affiner les algorithmes `a travers plusieurs it´erations entre pr´eparation et mod´elisation.
+– G´en´erer plusieurs mod`eles de Data Mining pour r´epondre `a la probl´ematique.
+Etape 5 : Evaluation
+– ´Evaluer la qualit´e et la pr´ecision des mod`eles construits.
+– Mesurer les performances des mod`eles avec des m´etriques appropri ´es.
+– Comparer les r ´esultats aux crit `eres de succ `es et ajuster les ´etapes pr ´ec´edentes si
+n´ecessaire.
+Etape 6 : D’eploiement
+11
+
+===== PAGE 22 =====
+–Pr´esenter les r´esultats aux parties pertinentes.
+–Int´egrer les r´esultats dans les syst`emes existants pour faciliter la prise de d´ecision.
+–Cr´eer des rapports et des visualisations pour rendre les r ´esultat utilisables.
+1.5.4 Comparaison entre les m ´ethodologies CRISP-DM et GIMSI
+Le tableau pr´esent´e 1.2 offre une comparaison d´etaill´ee entre deux m´ethodologies:
+CRISP-DM (Cross-Industry Standard Process for Data Mining) et GIMSI (Gestion Int´egr´ee
+de la M ´ethodologie des Syst `emes d’Information). Il met en ´evidence leurs diff ´erences
+en termes de d ´efinition, domaine d’application, structure, outils techniques, approche,
+avantages et limites. Tandis que CRISP-DM se concentre sur l’analyse des donn ´ees
+et suit une structure standardis ´ee en six phases, GIMSI adopte une approche plus
+flexible et globale pour la gestion de projets informatiques. Ce tableau permet ainsi de
+mieux comprendre les contextes d’utilisation de chaque m´ethode, leurs forces respec-
+tives ainsi que leurs limites selon les types de projets.
+Table 1.2: Comparaison entre les m ´ethodologies CRISP-DM et GIMSI
+Aspect Crsip-DM GIMSI
+D´efinition Cross industry
+standard process for
+Data Mining
+Gestion int ´egr´ee de la M ´ethodologie des
+syst`emes d’information.
+Domaine
+d’application
+Data Mining et
+projets d’analyse de
+donn`ees
+Gestion de projet informatique et syst `eme
+d’information
+Objectif
+principal
+Extractionde
+connaissances `a
+partir donn ´ees
+Gestion globale et int `egr´ee des projet SI, du
+d´ebut `a la fin
+12
+
+===== PAGE 23 =====
+Table 1.2: Comparaison entre les m ´ethodologies CRISP-DM et GIMSI
+Structure 6 phases (buisness
+understanding, Data
+understanding, Date
+preparation,
+modeling,
+Evaluation,
+Deployment)
+Variable selon les projets, souvent adapt ´es `a
+des besoins sp´ecifiques.
+Documentation Documentation
+standardis´e et
+guid´ee
+Documentation adaptables, souvent sp´ecifique
+au projet
+Outils et
+technique
+utilisation d’outils
+de Data Mining et
+d’analyse statistique
+Outils de gestion de projet logiciel de
+d´eveloppement SI
+Approche Orienter vers les
+donn´ees et les
+r´esultats analytiques
+Orient´es vers la gestion globales et integr ´ee
+des projets
+Avantages Standardisation des
+processus, Focus
+sur l’analyse des
+donn´ees, Large
+adoption dans la
+data mining
+Flexibilit´e et adaption au projet, Vision int´egr´ee
+des SI, Application `a divers types de projet
+13
+
+===== PAGE 24 =====
+Table 1.2: Comparaison entre les m ´ethodologies CRISP-DM et GIMSI
+Limites Peut etre trop rigide
+pour certains pro-
+jets sp ´ecifiques,
+Fortement ax ´e
+sur les donn ´ees
+uniquement
+Peut etre complexe mettre en place pour les
+petits projets, n ´ecessite une bonne expertise
+en gestion de projet SI
+Conclusion
+Ce premier chapitre a permis d’´etablir les fondations n´ecessaires `a la compr´ehension
+du projet de fin d’ ´etudes, en pr ´esentant le cadre global dans lequel il s’inscrit. Il a
+d´etaill´e l’environnement professionnel de Tunise T ´el´ecom, ses enjeux organisation-
+nels et technologique, ainsi que les limitations du syst`eme actuel de gestion des offres.
+Cette analyse a mis en ´evidence la n ´ecessit´e d’un moteur de recommandation intel-
+ligent, capable de s’appuyer sur l’apprentissage automatique pour offrir des services
+personnalis´es aux clients. Le choix de m´ethodologies adapt´ees, telles que CRISP-DM
+et GIMSI, t ´emoigne d’une base solide pour aborder, dans les chapitres suivants, la
+sp´ecification des besoins fonctionnels et techniques ainsi que le d ´eveloppement con-
+cret de la solution.
+14
+
+===== PAGE 25 =====
+CHAPITRE 2
+SP´ECIFICATION DES BESOINS ET SP ´ECIFICATIONS DES
+DONN´EES
+Introduction
+Cette ´etape a pour but de d ´efinir de mani `ere pr ´ecise les attentes du projet, les
+parties prenantes concern ´ees, ainsi que les sp ´ecifications fonctionnelles et non fonc-
+tionnelles du syst `eme `a d´evelopper. C’est sur elle que reposera le d´eveloppement du
+syst`eme de recommandation. Il est essentiel de suivre cette ´etape pour garantir la
+conformit´e du produit final aux exigences m´etier et techniques de Tunisie T´el´ecom
+Table 2.1: R ˆoles et objectifs des parties prenantes du syst `eme de recommandation
+Acteurs R ˆoles Objectifs
+Client (Utilisateur
+final)
+Abonn´e des services de Tunisie
+Telecom
+Recevoir des
+recommandations
+personnalis´ees
+Analyste
+marketing
+Interpr `ete les r´esultats du
+moteur de recommandation
+Adapter les offres selon
+les tendances d´etect´ees
+15
+
+===== PAGE 26 =====
+Table 2.1: R ˆoles et objectifs des parties prenantes du syst `eme de recommandation
+D´eveloppeurs BI /
+Data Scientists
+Conc ¸oivent et maintiennent le
+syst`eme
+Impl´ementer les
+algorithmes de
+recommandation
+Chef de projet /
+Product Owner
+Supervise le projet et d ´efinit les
+priorit ´es
+Valider les livrables en
+conformit´e avec les
+objectifs de Tunisie
+Telecom
+2.1 Analyse et specification des Besoins
+2.1.1 Besoins Fonctionnels
+Il est crucial de d´efinir clairement les besoins de la solution pour le d´eveloppement
+d’un syst`eme de recommandation intelligent pour Tunisie T ´el´ecom. On peut classer
+ces besoins en deux cat ´egories : fonctionnels, qui d ´ecrivent les fonctionnalit ´es at-
+tendues du syst `eme, et non fonctionnels, qui sp ´ecifient les exigences de qualit ´e, de
+performance et de s´ecurit´e. Cela assure que le produit final sera en harmonie avec les
+attentes des utilisateurs et les objectifs strat´egiques de l’entreprise.
+1-Collecte et traitement des donn´ees clients: Consommation, historique d’achat,
+navigation, recharge, etc.
+2-Analyse comportementale: Extraire des patterns de consommation person-
+nalis´es.
+3-G´en´eration de recommandations: Proposer des offres adapt ´ees aux besoins
+individuels.
+4-Visualisation des r ´esultats: Tableaux de bord dynamiques pour les respons-
+ables marketing.
+5-Gestion des mod`eles pr´edictifs: Entraˆınement, test et mise`a jour automatique
+des mod`eles.
+6-Int´egration avec les syst`emes existants: Import/export de donn´ees via API ou
+16
+
+===== PAGE 27 =====
+fichiers structur´es.
+2.1.2 Besoins Non Fonctionnels
+Outre les fonctionnalit ´es attendues, le syst `eme de recommandation doit aussi re-
+specter un ensemble de crit `eres de qualit ´e qui assurent son efficacit ´e, sa robustesse
+et sa facilit´e d’utilisation.
+1-Performance: Les recommandations doivent ˆetre calcul´ees rapidement, avec un
+temps de r´eponse acceptable.
+2-S´ecurit´e: Les donn ´ees personnelles doivent ˆetre prot ´eg´ees conform ´ement aux
+normes RGPD.
+3-Scalabilit´e:Le syst`eme doit pouvoir s’adapter`a un volume croissant de donn´ees.
+4-Disponibilit´e: Le syst`eme doit ˆetre disponible au moins 99 pour cent de temps
+5-Facilit´e d’utilisation: L ’interface de visualisation doitˆetre claire, intuitive et ac-
+cessible aux non-techniciens.
+Figure 2.1: Diagramme de cas d’utilisation
+Acteur :
+17
+
+===== PAGE 28 =====
+• TT RA op´erationnel: Utilisateur op ´erationnel du syst`eme d´ecisionnel.
+• TT RA Analyste : Analyste utilisant le syst `eme pour des taches plus pouss´ees.
+Cas d’utilisation :Ce sont les fonctionnalit´es principales du syst`eme.
+• G´erer l’application : Gestion de l’extraction, transformation et chargement des
+donn´ees.
+• G´erer l’application :Administration ou param´etrage g´en´eral de l’application.
+• G´erer les tableau de bord :Cr´eation ou visualisation de tableau de bord d´ecisionnels.
+• Aplliquer l’apprentissage automatique : Utilisation d’algorithmes pour anal-
+yser les donn´ees.
+• Authentification : Etape obligatoire d’identification avant l’acc`es aux autres fonc-
+tionnalit´es.
+2.2 Technologies utilis ´ees
+2.2.1 Environnement mat ´eriel
+Pour le d ´eveloppement de cette solution, nous avons pricipalement utilis ´e deux
+ordinateurs de marque ASUS et VICTUS avec les caract´eristiques suivantes :
+Processeur : Intel Core i7 et Ryzen 5
+RAM : 8GB
+Syst`eme d’exploitation : Windows 11 Professionnel
+Disque Dur : 256 SSD et 512 SSD
+2.2.2 Environnement logiciel
+Visual Studio Code :
+Il s’agit d’un´editeur de code qui prend en charge plusieurs langages de programmation
+18
+
+===== PAGE 29 =====
+et qui offre plusieurs fonctionnalit ´es. Il est consid ´er´e comme un logiciel open source
+multi plateforme. [3]
+Figure 2.2: Logo visual code
+Visual Studio (VS):
+C’est un environnement de d´eveloppement int ´egr´e (IDE) puissant et polyvalent pour
+les d´eveloppeurs de logiciels et les ´equipes. [4]
+Figure 2.3: Logo visual studio
+SQL Server Management Studio (SSMS) :
+L ’environnement Microsoft SQL Server Management Studio (SSMS) est un outil com-
+plet pour g ´erer l’infrastructure SQL Server. Inclut un ´editeur de script ainsi que des
+outils graphiques.[5]
+19
+
+===== PAGE 30 =====
+Figure 2.4: Logo SQL
+Google Colab
+Colab est un service h ´eberg´e de notebooks Jupyter qui ne n ´ecessite aucune config-
+uration et qui permet d’acc´eder sans frais `a des ressources informatiques, y compris
+des GPU et des TPU. Colab est particuli`erement adapt´e au machine learning, `a la data
+science et `a l’enseignement.[6]
+Figure 2.5: Google Colab
+20
+
+===== PAGE 31 =====
+2.2.3 Environnement technique de la solution BI
+Pour parvenir `a nos objectifs, nous mettrons en place une structure technique qui
+d´efinira les ´etapes n ´ecessaires pour que les donn ´ees puissent changer d’ ´etat, en
+commenc ¸ant par la collecte des donn ´ees, en passant par la mod ´elisation, en pas-
+sant par la visualisation et enfin le d ´eploiement technique. La phase de visualisation
+et enfin la mise en place.
+Figure 2.6: Lgo SQL Server/SSMS Logos
+Nous avons utilis ´e l’architecture technique suivante pour concevoir des chartes
+graphiques coh´erentes :
+- SQL Server Integration Services :
+Un syst`eme de prise de d ´ecision est constitu´e de trois ´el´ements essentiels : SSIS est
+un outil qui permet d’extraire, de transformer et de charger des donn ´ees, en somme
+ce qu’on appelle un ETL. Nous extrayons ces donn´ees d’une source, puis effectuons
+la transformation si n ´ecessaire, puis injectons ces donn ´ees dans MS SQL Server ou
+d’autres sources.
+Afin de collaborer aves SSIS, il est n ´ecessaire d’avoir Microsoft Visual Studio. il est
+donc pr ´ef´erable d’utiliser Visual Studio pour concevoir un package SSIS, ayant, si
+possible acc `es `a votre serveur de donn ´ees. Il est essentiel d’assurer au moins que
+l’importation a ´et´e r ´eussie ( en plus des journaux de progression fournis avec votre
+produit SSIS).
+- SQL Server Analysis Services :
+21
+
+===== PAGE 32 =====
+Figure 2.7: SSIS
+Analyse Services est un moteur de donn ´ees analytique employ ´es pour analyser les
+d´ecisions commerciales. Il offre des mod `eles de donn ´ees s ´emantique de niveau en-
+reprise pour les rapports d’entreprise et les applications clientes comme Power BI,
+Excel, les rapport de services et d’autres outils de visualisation de donn´ees.[7]
+- Power BI :
+En premier lieu, on trouve la zone ETL, qui implique l’extraction, la transformation et le
+chargement. Il est essentiel que les d ´eveloppeurs aient un acc`es exclusif.[8]
+Figure 2.8: Power BI
+22
+
+===== PAGE 33 =====
+Figure 2.9: Logo Streamlit
+- Streamlit :
+Streamlit est un frame open-source qui permet de cr ´eer des applications web inter-
+actives pour l’analyse de donn´ees et la visualisation. Il est principalement utilis ´e avec
+Pyhton et permet aux d´eveloppeurs de cr´eer rapidement des interfaces utilisateur pour
+leurs projets de science de donn ´ees. Vous pouvez cr ´eer des tableaux de bord, des
+graphiques interactifs et des applications personnalis´ees en utilisant Streamlit.[9]
+2.2.4 Choix de languages
+Cette partie pr ´esente les diverses biblioth `eques et languages de programmation
+employ´es dans ce projet.
+- Python : Python repr ´esente un language tr `es polyvalantes. la philosophie de con-
+ception du code accorde une grande importance `a la lisibilt´e, en utilisant massivement
+l’indentation. Python fait appel `a la collecte de donn ´ees inutiles et poss `ede un typage
+dynamique. Il supporte diff ´erentes approches de programmation, telles que la pro-
+23
+
+===== PAGE 34 =====
+grammation fonctionnell, orient´ee objet et structur´ee.[10]
+- SQL : Language de requ ˆete organis ´e employ ´e afin de stocker, g ´erer et r ´ecup´erer
+des informations provenant de donn ´ees relationnelles tels que MySQL, Oracle, SQL
+Server, et bien d’autres...[11]
+2.3 Identification des tables de dimensions et du table
+faits
+Outils requis qui seront install ´es, un mod `ele dimensionnel en fournissant des in-
+formation sur les faits et les dimension. Nous fournirons ´egalement des d ´etails en
+respectant la m´ethodologie convenue.
+2.3.1 Identification des tables faits
+Table fait Consommation client :
+La table 2.2 affiche les informations g ´en´erales sur les clients sont regroup ´ees dans
+cette source. Il y a 98 colonnes et 20 000 lignes, chacune repr´esentant un client unique
+identifi´e par un ID. L ’analyse comportementale est le rˆole principal. On y retrouve des
+attributs vari´es comme le statut du client (actif ou suspendu), le type d’offre souscrite,
+l’anciennet´e, la consommation Internet, les volumes d’appels, SMS, revenus g´en´er´es,
+ainsi que des d´etails sur les recharges ou forfaits. Les informations collect´ees permet-
+tent de dresser un profil d´etaill´e des usages et habitudes du client.
+Tableau 2.2: Table fait de consommation client
+Attributs Rˆole
+Id Identifiant unique du client
+Suite `a la page suivante
+24
+
+===== PAGE 35 =====
+Table 2.2 – suite
+Attributs Rˆole
+Statut : A = actif / S = sus-
+pendue
+Statut du client
+Offre (types) Type d’offre
+ANC M Anciennet´e en mois
+Consommation internet
+Volume session/weekend Volumes de donn´ees utilis´es
+Volume 4G 3G 2G Utilisateur internet par t´el´ephone
+T´el´ephone et appels
+NB CDR/weekend Nombre de communications
+DUREE appel out tot /gra-
+tuit/
+Dur´ee totale des appels sortants et entrants
+dur´ee appel ooredoo /or-
+ange/lyca/nessma /
+Dur´ee des appels sortants vers chaque
+op´erateur
+dur´ee offnet tot Dur´ee totale des appels sortants vers d’autres
+r´eseaux
+revenu voix/onnet/offnet/inter
+/roaming
+Revenus g´en´er´es selon types d’appels
+SMS
+Suite `a la page suivante
+25
+
+===== PAGE 36 =====
+Table 2.2 – suite
+Attributs Rˆole
+nb sms tot/in Volume des SMS
+revenu sms/sms inter Revenus des SMS
+NB SMS tt gms in/ooredoo
+/orange
+SMS rec ¸us selon l’utilisateur
+NB SMS OFFNET IN/INTER SMS rec ¸us hors r´eseaux ou de l’´etranger
+Forfait et recharge
+MNT forfait/data/voix Montant d´epens´e dans les forfaits
+NBforfait
+/data/mixte/FB/SMS
+Nombre de forfaits activ´es
+MNT rech Montant de recharge
+NB rech Nombre de recharges
+P N rech sup5/P mnt rech
+sup5
+Part des recharges ¿5 unit´es
+MNT Forfait FB Montant des forfaits pour Facebook
+Transfert et activation
+NB et MNT transfert
+IN/OUT
+Argent rec ¸u/envoy´e via transfert
+Suite `a la page suivante
+26
+
+===== PAGE 37 =====
+Table 2.2 – suite
+Attributs Rˆole
+NB activation VAS Nombres de services `a valeur ajout´ee activ´es
+Indicateur financier
+ARPU Revenu moyen par utilisateur
+ARPM Revenu moyen par minute
+P revenu voix/data /forfait Proportion de revenu par source
+P FF DATA/VOX/SMS/FB/
+WEEKEND
+Part des forfaits allou´ee `a chaque usage
+Rech Moy Montant moyen des recharges
+Activit´es entrantes
+NB JOUR ACT IN Nombre de jours d’activit´es entrantes
+Freq nb jr act in Fr´equence moyenne d’activit´e entrante
+Dur´ee APPEL IN/
+NB APPEL IN
+Dur´ee totale et nombre d’appels entrants
+DUREE TT GMS IN /
+DUREE TT FXE IN
+Dur´ee des appels entrants depuis GSM ou ligne
+fixe
+DUREE OOREDOO IN /
+ORANGE
+Dur´ee des appels entrants selon l’op´erateur
+Suite `a la page suivante
+27
+
+===== PAGE 38 =====
+Table 2.2 – suite
+Attributs Rˆole
+NB OOREDOO IN / OR-
+ANGE / OFFNET
+Appels entrants par op´erateur
+NB APPEL WEEKEND IN Appels rec ¸us le week-end
+Table fait activation des forfaits :
+La table 2.3 illustre que cette source contienne des donn ´ees sur les activations de
+forfaits par les clients pendant les mois de novembre, d ´ecembre et janvier. Il est
+fort probable qu’elle puisse surveiller les tendances mensuelles d’abonnement, les
+pics d’activation, et analyser l’´evolution du comportement d’achat selon les offres pro-
+pos´ees. Le type de forfait activ´e, la date d’activation, le montant du forfait et´eventuellement
+le canal utilis ´e (USSD, application, point de vente...) sont des ´el´ements qui peuvent
+ˆetre associ´es aux attributs associ´es. Il est primordial d’avoir acc`es `a cette source pour
+comprendre quels forfaits attirent le plus les clients et `a quelles p´eriodes.
+Tableau 2.3: Table fait des activations de forfaits NOV/DEC
+Attributs Rˆole
+ID Identifiant unique de la transaction
+Forfait Nom de l’option activ´ee par abonn´e
+TRANS AMOUNT Montant pay´e pour l’activation du forfait
+TRANS DATE Date de l’activation du forfait
+Suite `a la page suivante
+28
+
+===== PAGE 39 =====
+Table 2.3 – suite
+blue!20 Attributs Rˆole
+NB JOUR VALIDITE Nombre de jours pendant lequel le forfait est ac-
+tiv´e
+VOLUME DATAMEGA
+ATTRIBUE
+Quantit´e de donn ´ees mobile attribu ´ee avec le
+forfait
+NBR MINUTE ATTRIBUE Nombre de minutes de communication at-
+tribu´ees
+Table fait Consommation Hebdomadaire :
+La table 2.4 demontre les donn ´ees hebdomadaires de cette source concernent les
+mois de novembre, d´ecembre et janvier, probablement sur une base client ou agr´eg´ee.
+Son objectif est d’analyser la progression semaine apr`es semaine des comportements
+d’utilisation, comme la consultation d’Internet, les appels et les SMS, ainsi que les
+transactions li ´ees aux forfaits. En utilisant cette granularit ´e temporelle, il est possible
+de rep ´erer les tendances saisonni `eres, les pics d’activit ´e (par exemple pendant les
+fˆetes) ou les baisses occasionnelles d’utilisation. Ces donn ´ees sont tr `es importantes
+pour am´eliorer le ciblage marketing ou pr´evoir la charge sur les r´eseaux et services.
+Tableau 2.4: Table fait weekly data NOV/DEC/JANV
+(Consommation Hebdomadaire)
+ID Identifiant unique
+MONTH DT Date correspondant au mois de r´ef´erence
+WEEK DT Date correspondant `a la semaine de
+r´ef´erence
+VOLUME SESSION Quantit´e mesur ´ee pour une session
+donn´ee
+29
+
+===== PAGE 40 =====
+2.3.2 Identification des tables de dimensions
+Les tableaux expos´es mettent en ´evidence la richesse et la complexit´e des donn´ees
+t´el´ecoms collect ´ees pour l’analyse comportementale des clients. Trois aspects fon-
+damentaux de l’utilisation client sont captur ´es par cette base de donn ´ees multidi-
+mensionnelle : les communications vocales et SMS, les comportements de consom-
+mation de donn ´ees et les habitudes de recharge et d’achat de forfaits. Les dimen-
+sions MONTH-DT, WEEK-DT et VOLUME-SESSION sont utilis´ees pour structurer les
+donn´ees et permettre une analyse granulaire des patterns d’utilisation `a diff ´erentes
+´echelles temporelles. Les caract ´eristiques techniques de communication (NB-CDR,
+dur´ees d’appels par op´erateur, revenus voix) permettent de visualiser en d ´etail les in-
+teractions conversationnelles et les pr´ef´erences r´eseau des utilisateurs. Les m´etriques
+de forfaits et recharges (montants, fr´equences, types d’offres) mettent en´evidence les
+strat´egies de consommation et la valeur ´economique de chaque client. L ’int´egration
+d’indicateurs de performance ´economique tels que l’ARPU (Average Revenue Per
+User) et l’ARPM (Average Revenue Per Minute) avec des donn´ees comportementales
+d´etaill´ees (activit ´e weekend, r ´epartition des usages data/voix/SMS) constitue un so-
+cle analytique robuste pour la segmentation client et la pr ´ediction de churn. Gr ˆace `a
+cette architecture de donn ´ees, il est possible de croiser les dimensions temporelles,
+comportementales et ´economiques pour une compr´ehension compl`ete du profil client.
+Tableau 2.5: Table de dimension Consommation Internet
+Attribut Description
+Volume session volumes de donn´ees utilis´es
+Volume session
+weekend
+volumes de donn´ees utilis´es en weekend
+Volume 4G/3G/2G utilisateur internet par t´el´ephone
+30
+
+===== PAGE 41 =====
+Tableau 2.6: Table de dimension telephone et appel
+Attribut Description
+NB CDR Nombre de communication
+NB CDR weekend Nombre de communication en weekend
+dur´ee appel out tot /gratuit dur´ee total des appels sortants et entrants
+dur´ee appel ooredoo/ or-
+ange/lyca/nessma
+dur´ee des appels sortants vers chaque
+op´erateur
+dur´ee offnet tot dur´ee totales des appels sortants vers
+d’autres r´eseaux
+revenu voix/onnet/offnet/inter/
+roaming
+revenus g´en´erer selon types d’appels
+Tableau 2.7: Table de dimension SMS
+Attribut Description
+Volume session volumes de donn´ees utilis´es
+Volume session
+weekend
+volumes de donn´ees utilis´es en weekend
+Volume 4G/3G/2G utilisateur internet par t´el´ephone
+Tableau 2.8: Table de dimension Client
+Attribut Description
+ID identifiant unique du client
+Statut A Actif /S Suspendu
+Offre Types d’offre propos´e
+ANC M Anciennet´e en mois
+31
+
+===== PAGE 42 =====
+Tableau 2.9: Table de dimension forfaits et recharges
+Attribut Description
+NBforfait /data/mixte/FB/SMS nombre des forfait activ´es
+MNT rech montant de recharge
+Nb rech nombres de recharge
+P N rech sup5/P mnt rech
+sup5
+part de recharge est sup´erieur `a 5 unit´es
+MNT Forfait FB montant des forfait pour facebook
+MNT forfait/data/voix montant d´epens´es dans les forfaits
+Tableau 2.10: Table de dimension activit´e entrante
+Attribut Description
+Freq nb jr act in Fr´equence moyenne d’activit ´e en-
+trante
+Duree APPEL IN/
+NB APPEL IN
+Dur´ee totale et nombre d’appels en-
+trant
+DUREE TT GMS IN /
+DUREE TT FIX
+dur´ee des appels entrants depuis
+GSM ou ligne
+DUREE OOREDOO IN / OR-
+ANGE
+dur´ee des appels entrants selon
+l’op´erateur
+NB OOREDOO IN / ORANGE /
+OFFNET
+Appels entrants par op´erateur
+NB APPEL WEEKEND IN Appels rec ¸us le week-end
+NB JOUR ACT IN nombre de jours d’activit´es entrante
+Tableau 2.11: Table de dimension Indicateur financi´ere
+Attribut Description
+ARPM revenu moyen par minute
+P revenu voix/data /forfait proportion de revenu par source
+P FF DATA/VOIX/SMS/FB/
+WEEKEND
+part des forfaits allou ´e `a chaque us-
+age
+Rech Moy montant moyen des recharges
+ARPU revenu moyen par utilisateur
+32
+
+===== PAGE 43 =====
+Tableau 2.12: Table de dimension forfaits
+Attribut Description
+Forfait Nom ou identifiant du type d’offre ou de for-
+fait souscrit par le client.
+TRANS AMOUNT Montant de la transaction ou du recharge-
+ment li´e au forfait.
+TRANS DATE Date de la transaction ou d’activation du
+forfait.
+NB JOUR VALIDITE Nombre de jours pendant lesquels le forfait
+reste valide.
+VOLUME DATAMEGA
+ATTRIBUE
+Volume de donn ´ees (en Mo) attribu ´e avec
+le forfait.
+NBR SMS ATTRIBUE Nombre de SMS inclus dans le forfait.
+NBR MINUTE ATTRIBUE Nombre de minutes d’appel incluses dans
+le forfait.
+Tableau 2.13: Table de dimension SESSION
+Attribut Description
+MONTH DT Mois de la session ou de l’activit ´e. Utilis ´e pour
+l’analyse mensuelle.
+WEEK DT Semaine de la session ou de l’activit´e. Utile pour les
+agr´egations hebdomadaires.
+VOLUME SES-
+SION
+Volume de donn´ees utilis´e ou consomm´e pendant une
+session Internet ou data.
+33
+
+===== PAGE 44 =====
+Conclusion
+Ce chapitre a permis de d´efinir de mani`ere claire et structur´ee les besoins fonction-
+nels et non fonctionnels du syst `eme de recommandation `a developper pour la Tunisie
+T´el´ecom. A ´etabli une base solide pour la conception de la solution. Les exigences
+recueillies garantissent que le syst `eme r ´epondra aux attentes m ´etier tout en respec-
+tant les contraintes techniques et de performance. Ces sp ´ecifications constituent un
+point de d ´epart essentiel pour les ´etapes suivantes, notamment la compr ´ehension et
+la pr´eparation des donn´ees n´ecessaires `a la mise en oeuvre du moteur de recomman-
+dation.
+34
+
+===== PAGE 45 =====
+CHAPITRE 3
+COMPR´EHENSION ET PR ´EPARATION DES DONN´EES
+Introduction
+Apr`es avoir examin ´e en d ´etail les diff `erents aspects du projet dans le chapitre
+pr´ec´edent, nous allons maintenant aborder l’ ´etape importante de la construction de
+la base de donn ´ees. Cette ´etape initiale consiste `a collecter et traiter les donn ´ees
+n´ecessaires. Par cons´equent, ce chapitre d´ecrit les sources de donn´ees, les m´ethodes
+de collecte ainsi que les processus de compr´ehension et de nettoyage des donn´ees.
+3.1 Compr ´ehension des donn´ees
+La phase de compr ´ehension des donn ´ees dans la m ´ethodologie CRISP-DM est
+une ´etape cruciale qui implique la collecte initiale, l’exploration et la familiarisation avec
+les donn´ees afin d’identifier les caract´eristique cl´es, les relations entre les variables et
+les potentiels probl `emes de qualit ´e. Elle ´etablit ainsi une base solide pour les analy-
+ses avanc´ees et guide l’identification des besoins suppl´ementaires en donn ´ees et en
+pr´eparation.
+35
+
+===== PAGE 46 =====
+3.1.1 Business Intelligence
+Le terme ”Business intelligence” d´esigne un enssemble de technologies qui con-
+tribuent `a la prise de d ´ecision et offrent une vision globale des multiples op ´erations
+d’une entreprise. En offrant les informations indispensables au moment opportun et
+via le canal appropri ´e, le syst `eme d’information BI qui en d´ecoule joue un role essen-
+tiel dans la prise de d´ecision, permettant ainsi de suivre les objectifs et de modifier les
+methodes pour les atteindre. La Business Intelligence peut etre utilis ´ee de mani `ere
+tr`es vari ´ee d’une entreprise `a l’autre, car c’est un domaine en constante ´evolution.
+Cependant, tout cela a pour but commun d’assister les d´ecideurs dans l’´evaluation de
+la performance de leur entreprise. Le projet BI se divise en quatre ´etapes : la collecte,
+la mod´elisation, la pr´esentation et l’analyse.
+Ces ´etapes sont repr´esent´ees dans la figure”3.1” et sont d´ecrites en d´etails.
+Figure 3.1: Architecture technique de la solution BI
+36
+
+===== PAGE 47 =====
+3.1.2 Collecte initiale des donn ´ees
+La collecte des donn ´ees pour notre projet repose sur deux sources principales :
+Fichier CSV : Les fichiers CSV, sont souvent utilis ´es pour la gestion et le stockages
+de donn´ees structr ´ees qui sont int ´egr´es dans notre processus de collecte. Ils r ´esume
+l’ensemble des donn´ees reli´es au Syst`eme de recommandation.
+Cette approche de collecte des donn ´ees nous permet de consolider des donn ´ees
+vari´ees et compl `etes en assurant ainsi une base solide pour l’analyse et la prise de
+d´ecision. Compte tenu du niveau de confidentialit ´e et de sensibilit ´e des donn ´ees col-
+lect´es une phase d’authentification des diff ´erents intervenants a ´et´e jug ´e n ´ecessaire
+pour assurer la s´ecurit´e et la fiabilit´e des donn´ees.
+3.1.3 Description des donn ´ees
+Fichier CSV :
+Un syst `eme de recommandation centralise les KPI (Key Performance Indicators) li ´es
+au pr´ef´erences, comportements et interactions des utilisateurs avec les services num´eriques
+de Tunisie T ´el´ecom. Ces indicateurs sont essentiels pour ´evaluer la pertinence des
+recommandations, la performance du moteur de suggestion et la satisfaction client.
+Le syst `eme traite des donn ´ees telles que l’historique de navigation, les pr ´ef´erences
+explicites, les interactions pass´ees, et d’autres m´etriques comportementales cl ´es.
+Sur la base de ces donn ´ees vari ´ees, des analyse approfondies sont r ´ealis´es afin
+d’orienter les recommandations personnalis´ees et d’am´eliorer l’exp´erience utilisateur.
+Cela inclut l’optimisation de la pertinence des suggestions, l’adaptation dynamique aux
+besoins des utilisateur, et l’augmentation de l’engagement global.
+3.2 V ´erification de la qualit´e des donn´ees
+La qualit ´e des donn ´ees et cruciale pour garantir la fiabilit ´e des analyses et des
+d´ecisions qui en d´ecoulent. Voici les principaux aspects pris en compte dans la v´erification
+37
+
+===== PAGE 48 =====
+de la qualit´e des donn´ees :
+Donn´ees incompl `etes : Des valeurs nulles sont pr ´esentes dans les donn ´ees des
+technologies 2G, 3G, 4G, ce qui peut fausser les analyses et lespr ´evisions si elles ne
+sont pas correctement trait´ees.
+Incoh´erences dans la saisie des donn´ees :
+• Les noms des Customer sont parfois enregistr ´es en majuscules et miniscules,
+ce qui peut entrainer des erreurs lors de la consolidation des donn ´ees ou de la
+g´en´eration de rapports.
+• La pr ´esence d’espaces superflus dans les champs de texte peut introduire des
+ambiguites et compromettre la coh ´erence des donn ´ees lors des analyses au-
+tomatiques.
+Redondances : Des doublons dans les colonnes celles du Gouvernorat ou du nom
+de site doivent etre identifi ´es et corrig ´es pour ´eviter toute distorsion dans les r ´esultats
+sdes analyses.
+3.3 Pr ´eparation des donn´ees
+3.3.1 Configuration de la source de donn ´ees
+Pour utiliser le magasin de donn ´ees op ´erationnel, il est n ´ecessaire de pr ´evoir une
+base de donn´ees sp´ecifique. Ainsi, nous avons d´ecid´e de cr´eer une base de donn´ees
+appel´ee Consommation Client qui regroupera les tables d ´edi´ees aux cellules, entre
+autres.
+La connexion peut etre configur ´ee en ajoutant une connexion ADO NET `a l’aide des
+outils d’administration.
+Enfin, la connexion `a la source Consommation Client via le Gestionnaire de connexion
+dans SQL Server Integration Services repr´esente la derni`ere ´etape.
+La figure ci-dessous illustre l’ ´etablissement de cette connexion dans notre base de
+donn´ees SQL Server et dans Visual Studio :
+38
+
+===== PAGE 49 =====
+Figure 3.2: Etablir une connexion entre Visual Studio et SQL Server
+La figure 3.3 illustre le test de la connexion :
+Figure 3.3: Test de la connexion
+39
+
+===== PAGE 50 =====
+3.3.2 Flux de controle
+Le flux de controle ´etablit la chronologie et la logique du transfert des donn ´ees,
+incluant la planification des t ˆaches, la gestion des liens entre les diff ´erentes ´etapes
+du processus ETL (Extract, Tranform, Load), ainsi que la gestion des erreurs et des
+exception.
+Dans notre cas, chaque package traite les donn´ees associ´ees `a une entit´e sp´ecifique,
+telles que la technologie, les param `etres logique, physique, etc. Bien que chaque en-
+tit´e pr´esente des sp´ecificit´es distintes, le processus sous-jacent reste similaire, comme
+illustr´e dans la figure 3.4 :
+Figure 3.4: Illustration du flux de contr ˆole pour l’alimentation de la table fait Consom-
+mation Client
+Un conteneur de s´equence qui contient les tˆaches suivantes :
+- Un flux de donn´ees qui traitera les informations relatives `a la table Customer Data.
+- Deux tˆaches d’´ex´ecution de processus :
+- Tˆache qui permet de charger la table fait Consommation Client.
+- Tˆache qui permet de charger la dimension de la table.
+3.3.3 T ˆaches de flux de donn´ees
+Les tˆaches de flux de donn´ees sont des ´el´ements cl´es qui effectuent des op´erations
+sp´ecifiques sur les donn ´ees lors de leur transfert. Ces op ´erations incluent la connex-
+ion `a une base de donn´ees, la lecture de fichiers, ou l’utilisation d’API pour extraire les
+40
+
+===== PAGE 51 =====
+donn´ees brutes et les acheminer vers le syt`eme de transformation.
+Dans la partie pr´ecedente nous avons explicit´e les ´etapes qu’on a pass´ees afin d’alimenter
+une table ODS. Nous allons maintenant montrer la puissance de processus ETL de
+SSIS en d ´ecortiquant la t ˆache flux de donn ´ees consommation client de la figure 3.5
+qui est responsable des transformations de donn´ees.
+Figure 3.5: Illustration du flux de don ´ees de la tˆache Consommation Client
+3.3.4 Extraction des donn ´ees
+Nous proc´edons `a l’´extraction des divers donn´ees requises depuis nos fichiers CSV
+pour stocker dans la zone de staging (STG).
+Pour mettre en place une nouvelle base de donn ´ees et apporter les modifications
+n´ecessaires, nous dupliquons les tables dans notre base de donn´ees source sp´ecifique
+`a l’entreprise.
+Nous utilisons l’IDE Visual Studio pour cr´eer une solution nomm ´ee d’apr`es notre pro-
+jet, regroupant les projets de chaque phase : STG, DWH et SSAS. Le premier projet
+de STG.
+41
+
+===== PAGE 52 =====
+Nous cr ´eons in package pour chaque table extraite, dans ce package nous avons un
+composant source et un composant cible. Comme ce represente la figure 3.6 :
+Figure 3.6: Chargement de source de donn ´ees
+3.4 Transformation des donn ´ees
+3.4.1 Comportement des composants SSIS
+Dans cette partie, nous allons explorer les diff ´erentes cat ´egories de composants
+SSIS afin de pouvoir choisir ceux qui conviennent le mieux aux besoins du traitement.
+• Composant bloquants : Ce type de composant est tr`es exigeant en ressources
+car il doit analyser l’ensemble des donn ´ees en entr ´ee avant de produire une
+sortie. Parmi les exemples courants, on retrouve : l’agr ´egation, le tri ou encore
+l’´echantillonnage de lignes.
+• Composant semi-bloquants : Ils interrompent temporairement le flux des donn´ees.
+c’est le cas, par exemple, d’une jonction de types fusion qui attend que toutes les
+42
+
+===== PAGE 53 =====
+donn´ees n´ecessaires soient disponibes avant d’en produire en sortie.
+Exemples : Fusionner, Union ALL.
+• Composant non bloquant : Ces composants ne stockent pas les donn ´ees, ni
+enti`erement ni partiellement. Ils traitent donc les information de mani `ere plus
+rapide, ce qui les rend efficaces en termes de performances. `a titre d’exemple,
+on peut citer : les colonnes d ´eriv´ees, les recherches, ou encore les commandes
+ADO NET.
+La table 3.1 compare les diff`erents composants SSIS selon leur ex´ecution, l’utilisation
+m´emoire et quelques exemples.
+Table 3.1: Comparaison du comportement des composants SSIS
+Non-bloquant Instantan ´ee Faible Derived Column,
+Conditional Split,
+Data Conversion, Multicast
+Semi-bloquant Attente partielle Moyenne Merge, Merge Join, Union All,
+Pivot
+Bloquant Attente compl `ete ´Elev´ee Sort, Aggregate, Row Sampling
+Comportement Ex ´ecution M ´emoire Exemples
+3.4.2 Exemples d’utilisation des composants SSIS pour la trans-
+formation des donn´ees
+- Dimension Client :
+la figure 3.7 pr ´esente un flux de donn ´ees d ´evelopp´e dans l’environnement SSIS pour
+le traitement de la dimension client.ce flux trois ´el´ement principaux:
+Source ADO NET : Cette composante permet d’extraire les donn´ees clients depuis la
+base de donn´ees source relationnelle.
+Trier : Cette ´etape est utilis ´es pour organiser les donn ´ees selon un ou plusieurs at-
+tribut, souvent requis avant les op ´erations de chargement pour assurer la coh ´erence
+des insertion.
+43
+
+===== PAGE 54 =====
+Destination ADO NET : Cette composante permet de charger les donn ´ees trait ´ees
+vers la table cible dans le data warehouse.
+Figure 3.7: Flux de donn ´ee pour le chargement de la ”Dimension Client”
+- Utilisation forfait : La figure 3.8 pr ´esente les ´etapes de trois fichiers Excel ont
+´et´e int´egr`es, repr´esentant l’utilisation du forfait client durant les moisJanvier, Novem-
+bre, D ´ecembre. l’outils SSIS a ´et´e pour automatiser ce processus. Chaque fichier a
+´et´e connect ´e via une source de donn ´ees Excel, puis les flux issus de ces fichier ont
+´et´e fusionn´es `a l’aide de la tacheUnion All, permettant de consolider l’ensemble des
+enregistrements dans un flux de donn´ees unique.
+Ce flux unifi´e a ensuite ´et´e dirig´e vers une Destination ADO NET, assurant le charge-
+ment de l’ensemble des donn´ees fusionn´ees dans une base de donn´ees relationnelle.
+Cette ´etape est essentielle pour permettre une exploitation centralis ´es des donn ´ees,
+notamment `a travers des processus d’analyse, de reporting et d’alimentation du data
+warehouse
+44
+
+===== PAGE 55 =====
+Figure 3.8: Flux de donn ´ees d’utilisation de don´ees
+- Consommation hebdomad´ere : Dans la figure 3.9 pr´esente l’´etape du processus
+ETL, trois fichiers Excel repr´esentant l’utilisation du forfait client pour les moisJanvier,
+Novembre, D´ecembre. La t ˆaches Union ALL a ´et´e utilis´ee pour fusionner ces fichier
+en un flux de donn ´ees unique et coh ´erent. Ce flux consolid ´e a ensuite ´et´e vers une
+detination ADO NET, assurant ainsi le chargement des donn ´ees dans une base de
+donn´ees relationnelle. Cette ´etape permet de centraliser les informtions issues de
+diff´erentes p´eriodes, facilitant ainsi leur exploitation ult´eri´eure dans la cadre d’analyses
+statistiques, de visualisations ou de rapport d´ecisionnels.
+Figure 3.9: T ˆache de flux de donn´ees de consommation Hebdomad´eres
+45
+
+===== PAGE 56 =====
+La figure 3.10 repr´esente les tables de base de donn´ees.
+Figure 3.10: Table de la base de donn´ees
+Conlusion
+Dans ce chapitre, nous avons pr´esent´e le processus du module de compr´ehension
+et de pr´eparation des don´ees et comment exactement nous avons r´eussi `a nettoyer nos
+don´ees et `a les convertir d’un texte non structur´e en une base de donn´ees relationnelle
+propre, prˆete pour la mod´elisation et l’´evaluation.
+46
+
+===== PAGE 57 =====
+CHAPITRE 4
+VISUALISATION ET PR´EDICTION DE DONN ´EES
+Introduction
+L ’objectif principal de cette phase de mod´elisation est de d ´evelopper un syst `eme
+de recommandation intelligent capable de pr´edire l’offre la plus ad´equate pour chaque
+client de Tunisie Telecom, en se basant sur son historique de consommation, son com-
+portement d’achat et ses caract ´eristiques personnelles. Nous avons choisi d’utiliser
+des algorithmes de classification supervis ´ee pour notre projet de syst `eme de recom-
+mandation d’offres. Random Forest, AdaBoost et XG Boost ont ´et´e utilis ´es pour met-
+tre en œuvre des mod `eles de machine learning. Les mod `eles offrent la possibilit ´e de
+classer les clients dans diverses cat´egories correspondant aux offres actuelles.
+47
+
+===== PAGE 58 =====
+4.0.1 Mod `ele en constellation :
+Figure 4.1: Mod `ele en constellation
+4.0.2 Page d’authentification
+L ’interface d’authentification contient le nom d’utilisateur et le mot de passe pour
+d´emarrer l’utilisation de l’application. Cette interface repr´esente la fenˆetre d’accueil de
+l’application, mettant en avant son aspect de s´ecurit´e : le syst`eme v´erifie la disponibilit´e
+du compte client et attribue les droits et les privil `eges n ´ecessaires gr ˆace `a Streamlit.
+la figure 4.1 affiche l’interface de login :
+48
+
+===== PAGE 59 =====
+Figure 4.2: Interface Login
+4.0.3 Mod `eles de donn´ees de Power BI
+Sch´ema en ´etoiles :
+Figure 4.3: Sch ´ema en ´etoile
+49
+
+===== PAGE 60 =====
+4.0.4 Page des tableaux de bords
+La figure 4.3 pr ´esente la page d’accueil de l’application T´el´ecom, affichant le logo
+de l’entreprise, le slogan ainsi que des options de navigation vers les selections ’Suivi
+global de la consommation’, ’Analyser le comportement individuel des clients’, ’Analyse
+des Forfaits’, ’Revenus et Rentabilit´e’.
+Figure 4.4: Interface des tabeaux de bords
+4.0.5 Description de la page d’accueil
+En-tˆete : Le Logo de l’entreprise ou de l’application Tunisie T´el´ecom est situ ´e en
+haut `a gauche.
+Slogan : Le Futur vous appelle.
+Navigation de cette page
+- Suivi global de la consommation : Donne acc `es aux vue d’ensemble sur les usages
+client.
+- Analyse le comportement individuel des client : Permet d’acc`eder et Etudier les habi-
+tudes de consommation des clients de mani`ere indiviuelle ou par segment.
+- Analyse des forfait : Analyser la distibution, l’attribution et la consommation des for-
+faits.
+- Revenus et rentabilit ´e : Suivre les revenus g ´en´er´es par client et les indicateurs de
+rentabilit´e.
+50
+
+===== PAGE 61 =====
+4.0.6 Suivi global de la consommation
+le rapport de la figure 4.4 illustre la suivi global de consommation d’une entreprise
+connue sur le nom Tunisie T´el´ecom.
+Plusieur indicateurs cl´es de performance (KPI) sont pr´esent´es dans le tableau de bord
+a pour objectif de centraliser, en temps r ´eel, les donn ´ees de consommation des client
+afin de faciliter la prise de d´ecision pour les ´equipes commerciales et marketing.
+Figure 4.5: Tableau de bord suivi global de la consommation
+51
+
+===== PAGE 62 =====
+Indicateurs cl´es
+• Revenu InterOffnet : Le montant s’´el`eve `a 108.67K, repr ´esentant les revenus
+issusdes communications hors r´eseaux.
+• ARPU (Average Revenu Per User) : Estim´e `a 564.28K, cet indicateur mesure
+la rentabilit´e moyenne par utilisateur.
+• ID Consommation Client : Avec une valeur de 2 milliards, il refl `ete le volume
+total d’identifiants client li´es `a une activit´e de consommation.
+• Somme Trans amount : Le montant atteint 526.39K, soit pr `es de la moiti ´e du
+seuil de 1.05M, indiquant le volume financier des transactions effectu´ees.
+Analyse Temporelle
+• Transfer et activation par mois : Le graphique en secteurs affichent des parts
+proches. Cela montre une r ´epartition assez stable des transferts et activations
+sur ces trois mois.
+• Volume de session : Le graphique en courbe illustre la diminution du volume en
+octobre, puis un augmentation nettement en novembre et d ´ecembre, atteignant
+pr`es de 100Md en fin d’ann´ee. Cela indique une hausse de l’utilisation des ser-
+vices.
+• Volume de donn´ees attribu´e : Le grahique en aires affiche des pics fr´equentes
+apparaissent chaque mois, souvent en d ´ebut de mois. Ils peuvent correspondre
+`a des rechargements ou offres sp´eciales.
+• Nombre d’activit´e internes (NbActiviteIn) : L ’histogramme illustre que le nom-
+bre d’activit´es monte progressivement d’octobre`a d´ecembre, avec un pic `a 4.8M
+en d´ecembre.
+52
+
+===== PAGE 63 =====
+4.0.7 tableau de bord d’analyse le comportement individuel des
+client
+Le rapport 4.5 pr ´esente l’analyse de comportement indiviuel des client par mois
+(octobre, novembre, d´ecembre, janvier)
+Figure 4.6: Analyse de comportement des clients
+• Consommation Client : Ce graphiqe en forme de jauge montre la consomma-
+tion globale des clients.
+• Filtre par client : In menu d´eroulant permet de choisir un client (IDClient). Cela
+permet d’afficher les donn´ees sp ´ecifiques `a ce client pour une analyse person-
+nalis´ee.
+53
+
+===== PAGE 64 =====
+• Appel T ´el´ephoniques par mois : Ce graphique `a barres horizantales montre
+la quantit´e d’appels effectu´es chaque mois. Il permet de voir quels moiis sont les
+plus actifs.
+• SMS par mois : Ce graphique en aires pr ´esente le volume de SMS envoy ´es
+chaque mois. On peut faciliment rep´erer les hausses et les baisse d’envoi.
+• Forfaits Data le Weekend : Ce entonnoir montre combien de fois les clients
+ont utilis´e leurs forfaits internet le weekend et par mois. Il permet de comprendre
+l’usage de la data pendant les jours non ouvr´es.
+• Activit´e entrante par mois : Un graphique en anneau indique la r ´epartion des
+appels et SMS rec ¸us par mois. Il permet de comparer facilement l’activit´e entre
+les mois.
+• Matrice des donn ´ees clients : Cette Matrice affiche les donn ´ees cl ´es pour
+chaque client :
+Nombre de SMS envoy´es.
+Revenu moyen par utilisateur(ARPU).
+Nombre d’activit´es entrantes.
+Utilisation de la data le Weekend.
+Nombre de revenu offnet.
+Somme de volume session.
+4.0.8 Analyse des forfaits
+Le rapport de la figure 4.6 suivant montre l’analyse des forfaits attribu´es aux client
+selon diff´erents indicateurs.
+54
+
+===== PAGE 65 =====
+Figure 4.7: Tableau de bord d’analyse de forfaits
+• Relation entre validit´e et montant : Un graphique en nuage de points montre
+la relationentre le nombre de jours validit ´e et le montant total de transactions.
+les client sont regroup ´es en trois clusters. Cela permet de voir quels groupes
+d´epensent le plus en fonction de la dur´ee de leurs forfaits.
+• R´epartition des jours de validit ´e : Un treemap affiche comment les jours de
+validit´e sont r´epartis entre les diff ´erent cluster.
+• R´esum´e des indicateurs :
+526.39K : Totale des montants de transactions.
+1 million : Nombre total de jours de validit ´e.
+55
+
+===== PAGE 66 =====
+258 millions : Volume total de donn´ees (en m´ega) attribu´ees.
+• Suivi dans le temps : Deux graphique en courbes montrent l’evolution :
+Des SMS et minutes attribu´es par jours.
+Du volume de donn´ees mobiles attribu´ees.
+Ce qui permet d’analyser l’utilisation au fil du temps (novembre 2024 `a janvier
+2025) et d’identifier les pics de consommation.
+• R´epartition des ressources attribu ´ees : Un diagramme en anneau montre
+comment sont r ´epartis les diff ´erents types de ressources : minutes, SMS, data,
+validit´e. Ce qui permet de savoir quels serrvices sont les plus utilis ´es par les
+clients.
+4.0.9 Revenus et rentabilit ´e
+Figure 4.8: Revenus et rentabilit´e
+56
+
+===== PAGE 67 =====
+• Performance globale : Le tableau de bord montre une performance de 75.51
+pourcent avec un d´epassement d’objectif de +887.06 pourcent.
+• ARPU par client : Ce graphique en barres montre que :
+Le client ’ID 1089’ g´en`ere le plus de revenu (155).
+Les revenus diminuent progressivement par client.
+Quelques clients concentrent la majorit´e des revenus.
+• Evolution des revenus : Ce graphique lin´eaire illustre :
+La croissance continue de novembre 2024 `a janvier 2025.
+Passage de 50K `a 60K.
+Tendance positive constante.
+• R´epartitions des revenus : Le graphique en barre empil´ees affiche :
+Une augmentation : 58K.
+Une diminution : 56.2K.
+Focus sur la p´eriode 2024-2025
+4.0.10 Les mod `eles de classifications
+Dans le cadre de ce projet, plusieurs mod `eles de classification supervis ´ee ont ´et´e
+d´evelopp´es afin de pr ´edire les offres les plus adapt ´ees aux profils des clients. Les
+algorithmes utilis´es incluent Random Forest, AdaBoost et XGBoost, chacun reconnu
+pour ses performances et sa capacit´e `a g´erer des donn´ees complexes.
+–Random Forest : Les arbres de d´ecision sont utilis´es dans cet algorithme d’ensemble.
+Il associe plusieurs arbres vuln´erables pour ´elaborer un mod`ele robuste et performant.
+Il est sp´ecialement conc ¸u pour les jeux de donn´ees h´et´erog`enes et supporte efficace-
+ment le surapprentissage.
+–AdaBoost (Adaptive Boosting) : AdaBoost est un algorithme global conc ¸u pour
+alt´erer les pr ´edictions des mod `eles faibles, habituellement des arbres de d ´ecision
+peu profonds, dans le but d’augmenter la pr´ecision. Pour renforcer les exemples mal
+pr´edits, il ajuste les erreurs `a chaque it´eration.
+57
+
+===== PAGE 68 =====
+–XGBoost (Extrˆeme Gradient Boosting) : La gestion efficace de la m´emoire, le par-
+all´elisme et les techniques de r´egularisation int´egr´ees de XGBoost permettent d’obtenir
+de meilleures performances gr ˆace `a sa version optimis´ee de Gradient Boosting. Il est
+extrˆemement efficace pour les comp ´etitions de data science et est c ´el`ebre pour sa
+pr´ecision. La comp ´etence de ces mod `eles r ´eside dans leur capacit ´e `a g ´erer la com-
+plexit´e des donn´ees clients, `a traiter les relations non lin ´eaires entre les variables et `a
+produire des pr´edictions de haute pr´ecision.
+Le choix de ces trois mod `eles permet d’explorer diff ´erentes approches d’ensemble
+learning (bagging pour Random Forest et boosting pour AdaBoost et XGBoost), tout
+en garantissant une bonne pr´ecision, une capacit´e `a g´erer la complexit´e des donn´ees
+et une ´evaluation comparative pertinente sur les jeux de test et validation.
+4.0.11 Pr ´eparation des donn´ees pour la classification
+4.0.11.1 Pr ´eparation des donn´ees
+La qualit ´e des donn ´ees utilis ´ees en entr ´ee est un facteur d ´eterminant pour la
+r´eussite d’un mod`ele de classification. Pour ce projet, il a ´et´e essentiel de passer
+par une ´etape rigoureuse de pr´eparation des donn´ees afin de recommander les offres
+les plus adapt´ees aux clients de Tunisie Telecom. Cette ´etape a permis d’assurer que
+les mod `eles de machine learning puissent apprendre en se basant sur des donn ´ees
+structur´ees, propres et repr´esentant le comportement du client.
+Avant d’entraˆıner les mod`eles, plusieurs op´erations ont ´et´e r´ealis´ees :
+-Nettoyage des donn ´ees : Il a ´et´e identifi ´e des enregistrements incomplets ou con-
+tenant des valeurs aberrantes lors du nettoyage des donn´ees. Il a ´et´e possible d’enlever
+ou de remplacer les valeurs manquantes en utilisant des m´ethodes d’imputation telles
+que la moyenne ou la m´ediane en fonction du type de variable.
+–Encodage des variables cat ´egorique : Le Label Encoding, le One-Hot Encoding
+et d’autres techniques ont ´et´e utilis ´es pour transformer les valeurs num ´eriques des
+colonnes, telles que le type d’abonnement ou certaines pr´ef´erences.
+58
+
+===== PAGE 69 =====
+–Transformation des variables : Malgr´e le manque de normalisation stricte pour
+les mod `eles comme Random Forest et XGBoost, les variables num ´eriques avec des
+diff´erences d’´echelle tr `es importantes ont ´et´e standardis ´ees pour pr ´evenir les biais
+d’apprentissage.
+–S´election des variables pertinentes : Grˆace `a une analyse exploratoire, il a ´et´e
+possible de mesurer la corr ´elation entre les variables explicatives et la variable cible.
+Les variables peu informatives ou redondantes ont ´et´e ´elimin´ees, tout en maintenant
+celles qui ont une influence significative sur le choix d’une offre.
+–Cr´eation des jeux des donn´ees : Trois sous-ensembles ont´et´e s´epar´es du dataset.
+Jeu d’entraˆınement (train set) : utilis´e pour entraˆıner les mod`eles.
+Jeu de test (test set) : utilis ´e pour ´evaluer les performances sur des donn ´ees incon-
+nues.
+Jeu de validation (validation set) : utilis´e pour ajuster les hyperparam`etres des mod`eles
+et comparer leurs performances.
+4.0.11.2 Environnement de l’ex ´ecution
+Langage utilis´e : Python.
+Biblioth`eques : scikit-learn, xgboost, numpy, pandas, matplotlib, seaborn.
+Param`etres : les param`etres standards ont ´et´e utilis´es dans un premier temps, avec
+un r´eglage l´eger du nombre d’estimateurs pour XGBoost et AdaBoost.
+4.0.12 Les M ´etriques d’´evaluation
+Dans tout projet de machine learning, il est essentiel d’ ´evaluer les performances
+des mod`eles. Sa fonction est de quantifier la capacit´e pr´edictive de chaque algorithme
+et d’orienter le choix du mod `ele final `a d ´eployer.Pour ´evaluer les performances de
+chaque mod`ele, les m´etriques suivantes ont ´et´e calcul´ees ´Evaluer les mod`eles de clas-
+sification est une ´etape cruciale pour valider la performance d’un syst`eme de recom-
+mandation bas ´e sur l’apprentissage automatique. Nous avons effectu ´e des tests sur
+trois mod`eles dans le cadre de notre projet : Random Forest Classifier, AdaBoost Clas-
+59
+
+===== PAGE 70 =====
+sifier et XGBoost Classifier. Dans le but d’ ´evaluer leur capacit ´e `a pr ´edire de mani `ere
+pr´ecise les offres les plus appropri ´ees pour chaque client, nous avons utilis ´e diverses
+m´etriques standards de classification : Accuracy, Precision, Recall, F1-score et la ma-
+trice de confusion.
+4.0.12.1 Accuracy
+L ’accuracy, ou exactitude, mesure la proportion globale des pr´edictions correctes.
+C’est une mesure intuitive et globale qui donne une id ´ee g ´en´erale de la performance
+du mod`ele.
+Accuracy=TP+TN/+FP+FN TP+TN
+Cependant, elle peut ˆetre trompeuse si les classes sont d ´es´equilibr´ees. Dans notre
+cas, bien que les classes ne soient pas parfaitement ´equilibr´ees, l’accuracy reste per-
+tinente grˆace au pr´etraitement effectu´e.
+4.0.12.2 Precision
+La pr ´ecision indique la proportion des pr ´edictions positives qui ´etaient r ´eellement
+correctes. Cette m ´etrique est particuli `erement utile lorsque le coˆut d’un faux positif est
+´elev´e. Par exemple, recommander une offre inappropri ´ee `a un client peut entra ˆıner
+une insatisfaction ou un d´esabonnement.
+Precision=TP/FP+TP
+4.0.12.3 Recall
+Le rappel ou sensibilit ´e, mesure la capacit ´e du mod `ele `a identifier correctement
+les instances positives (les clients pour lesquels une certaine offre est r ´eellement
+adapt´ee).
+Recall=TP/FN+TP
+60
+
+===== PAGE 71 =====
+Dans un syst`eme de recommandation, un faible rappel pourrait signifier que l’algorithme
+permet de proposer des offres pertinentes `a certains clients.
+4.0.12.4 F1-score
+Le F1-score est la moyenne harmonique entre la pr ´ecision et le rappel. Il permet
+de trouver un ´equilibre entre les deux, en particulier dans des situations o`u il existe un
+compromis entre les faux positifs et les faux n´egatifs.
+F1-score=2×(Precision*Recall/Precision+Recall)
+Dans notre contexte, il refl`ete la capacit´e globale du mod`ele `a faire des recommanda-
+tions pertinentes, en minimisant les erreurs dans les deux directions.
+4.0.12.5 Matrice de Confusion
+La matrice de confusion est un outil visuel qui permet d’analyser en d´etail les per-
+formances d’un mod`ele de classification. Elle pr ´esente, pour chaque classe (chaque
+type d’offre), le nombre de pr´edictions correctes et incorrectes. Cela permet d’identifier
+les types d’erreurs les plus fr ´equents, par exemple lorsqu’une offre de type B est
+syst´ematiquement confondue avec une offre de type A. Cette analyse fine nous permet
+d’am´eliorer le mod`ele ou d’ajuster certaines classes si n´ecessaire.
+4.0.13 ´evaluation et Interpr´etation des r´esultats
+4.0.13.1 Evaluation des mod `eles
+Evaluation du mod´ele Random Forest
+Une ´evaluation du mod `ele de classification (Mod `ele 1) est pr ´esent´ee dans la fig-
+ure ”4.8” en utilisant les donn ´ees d’entraˆınement, les donn´ees r ´eels et les donn ´ees
+pr´edictifs.
+61
+
+===== PAGE 72 =====
+Figure 4.9: Mod ´ele Random Forest
+Le mod `ele a ´et´e test ´e sur un ensemble de donn ´ees de plus que 20000 donn ´ees
+,lesquelles ont ensuite ´et´e utilis´ees pour effectuer des pr´edictions. Les m´etriques suiv-
+antes ont ´et´e utilis´ees pour ´evaluer la performance de ce mod`ele de pr´ediction :
+–Accuracy : 0.803
+–Precision : 0.938
+–Recall : 0.803
+–F1-Score : 0.834
+Apr`es avoir entraˆın´e un mod `ele de classification sur un ensemble de plus que 20000
+points de donn ´ees ,les r ´esultats obtenus indiquent un taux d’accroissement de 80,27
+pourcent, ce qui implique que 8 pr´edictions sur 10 sont exactes. La pr´ecision extrˆemement
+´elev´ee (93,77 pourcent) indique que la grande majorit ´e des pr ´edictions positives ef-
+fectu´ees par le mod `ele ´etaient exactes, ce qui t ´emoigne d’une faible proportion de
+faux positifs. La proportion de rappel (80,27 pourcent ), qui est identique `a celle de
+l’accuracy, d´emontre que le mod `ele d ´etecte correctement une grande partie des in-
+stances positives, mais qu’il pourrait encore en manquer certaines. Avec un F1-score
+62
+
+===== PAGE 73 =====
+de 83,41 pourcent, le mod `ele ´equilibre pr ´ecision et rappel, confirmant sa robustesse
+globale, tout en mettant en ´evidence une l ´eg`ere marge d’am´elioration pour d ´etecter
+les cas positifs.
+Evaluation du mod´ele ADABOOST
+Une ´evaluation du mod `ele de classification (Mod `ele 2) est pr ´esent´ee dans la figure
+”4.9” en utilisant les donn ´ees d’entraˆınement ,les donn ´ees r ´eelles et les donn ´ees
+pr´edictives.
+Figure 4.10: Mod ´ele ADABOOST
+Les m´etriques suivantes ont ´et´e utilis´ees pour ´evaluer la performance de ce mod`ele
+de pr´ediction:
+–Accuracy : 1.000
+–Precision : 0.952
+–Recall : 0.953
+–F1-Score : 0.952
+Le mod`ele a ´et´e ´evalu´e sur un jeu de donn´ees de grande taille et a produit des r´esultats
+exceptionnellement performants. Avec une accuracy de 99,90 pourcent, le mod `ele
+63
+
+===== PAGE 74 =====
+parvient `a pr ´edire correctement presque toutes les instances. La pr ´ecision de 99,86
+pourcent indique que les pr´edictions positives sont presque toutes exactes, ce qui sig-
+nifie une quasi-absence de faux positifs. Le rappel de 99,90 pourcent montre que
+le mod `ele identifie presque toutes les vraies instances positives, r ´eduisant ainsi con-
+sid´erablement les faux n´egatifs. Le F1-score de 99,88 pourcent, tr `es proche des deux
+autres m´etriques, confirme un excellent ´equilibre entre pr´ecision et rappel.
+Evaluation du mod´ele XGBOOST
+Une ´evaluation du mod `ele de classification (Mod `ele 3) est pr ´esent´ee dans la figure
+”4.10” en utilisant les donn ´ees d’entraˆınement ,les donn ´ees r ´eelles et les donn ´ees
+pr´edictives.
+Figure 4.11: Mod `eles XGBOOST
+Les m´etriques suivantes ont ´et´e utilis´ees pour ´evaluer la performance de ce mod`ele
+de pr´ediction:
+–Accuracy : 0.998495
+–Precision : 0.998128
+–Recall : 0.998495
+64
+
+===== PAGE 75 =====
+–F1-Score : 0.998171
+Les performances affich ´ees par le mod `ele sur le jeu de donn ´ees test ´e sont tr `es
+´elev´ees. Avec un taux d’accuracy de 99,85 pourcent, on peut affirmer que presque
+toutes les pr ´edictions sont exactes. La pr ´ecision de 99,81 pourcent d ´emontre que la
+quasi-totalit´e des pr ´edictions positives sont exactes, ce qui signifie qu’il y a tr `es peu
+de faux positifs. En outre, le rappel de 99,85 pourcent indique que le mod `ele parvient
+`a rep ´erer pratiquement toutes les instances positives, r ´eduisant au minimum les faux
+n´egatifs. Le F1-score de 99,82 pourcent, qui est tr `es ´eloign´e des autres m ´etriques,
+montre une excellente harmonie entre la pr´ecision et le rappel.
+4.0.14 Int ´erpr`etation
+Chaque mod`ele de classification test´e pr´esente des caract´eristiques int´eressantes,
+mais il pr ´esente des performances et une fiabilit ´e diff ´erentes. Le mod `ele Random
+Forest est efficace pour identifier correctement les offres adapt ´ees, mais sa capacit ´e
+`a manquer certains cas pertinents demeure limit ´ee. Sa fiabilit ´e est confirm ´ee, mais il
+n’est pas assez performant pour prendre des d ´ecisions critiques o `u l’exhaustivit´e est
+essentielle.
+En ce qui concerne le mod `ele AdaBoost, il affiche une pr ´ecision remarquable et
+semble exceller sur l’ensemble des donn´ees. Il rep `ere de mani `ere efficace les offres
+appropri´ees, tout en r ´eduisant au minimum les erreurs de classification. N ´eanmoins,
+sa performance presque parfaite peut susciter des interrogations sur sa capacit ´e `a
+g´en´eraliser en dehors du jeu de test, laissant planer un l ´eger doute sur un ´eventuel
+surapprentissage.
+En revanche, le mod `ele XGBoost se distingue nettement par son ´equilibre exem-
+plaire entre justesse, exhaustivit ´e et robustesse. Sa capacit ´e `a rep ´erer efficacement
+les bonnes offres est associ ´ee `a une grande stabilit ´e face `a l’arriv´ee de nouvelles
+donn´ees. En utilisant une structure optimis ´ee et des m ´ecanismes de r ´egularisation,
+il parvient `a maintenir des performances tr `es ´elev´ees tout en ´evitant les risques de
+65
+
+===== PAGE 76 =====
+sur-apprentissage. XGBoost est le mod `ele le plus performant et le plus fiable pour
+´elaborer un syst `eme de recommandation d’offres efficace, pr´ecis et p ´erenne dans le
+temps.
+Conclusion
+Pendant ce chapitre, nous avons expos´e et compar´e trois mod`eles de classification
+utilis´es pour notre demande de recommandation d’offres, en analysant leurs perfor-
+mances `a l’aide de diverses m´etriques d’´evaluation. On a identifi ´e le mod `ele le plus
+performant en se basant sur des crit`eres tels que la pr´ecision, le rappel et le F1-score.
+Apr`es cela, nous avons d ´epeint la m ´ethode d’analyse des comportements des clients
+`a travers une s´erie de tableaux de bord interactifs conc ¸us sous Power BI. Grˆace `a ces
+visualisations, il est possible de mieux appr ´ehender les habitudes de consommation,
+l’utilisation des forfaits et l’´evolution hebdomadaire de la consommation, ce qui aide `a
+interpr ´eter de mani`ere concr`ete les r´esultats des mod`eles pr´edictifs.
+66
+
+===== PAGE 77 =====
+Conclusion G´en´erale
+Les strat ´egies de gestion de la relation client ont subi de profondes transforma-
+tions en raison de l’´evolution rapide des technologies de l’information et de l’explosion
+des donn ´ees clients dans le secteur des t ´el´ecommunications. De nos jours, les en-
+treprises ont pour objectif de fid ´eliser leurs abonn ´es, tout en anticipant leurs besoins
+pour leur proposer des services personnalis´es et `a forte valeur ajout´ee. Les syst `emes
+de recommandation jouent un r ˆole essentiel dans ce contexte, en permettant une ex-
+ploitation intelligente des donn ´ees pour cibler le marketing, assurer la satisfaction des
+clients et stimuler les ventes. Ce projet actuel s’inscrit dans cette dynamique. Son
+objectif principal ´etait de concevoir et de d ´evelopper un syst `eme de recommandation
+d’offres bas´e sur l’apprentissage automatique, capable de pr ´edire les offres les plus
+susceptibles d’int´eresser chaque client en fonction de son profil, de son historique
+de consommation et de ses comportements pass ´es. Une d ´emarche rigoureuse et
+structur´ee a ´et´e suivie pour accomplir cela. Son premier pas a ´et´e de compren-
+dre le m ´etier et les besoins sp ´ecifiques de Tunisie Telecom, dans le but de mieux
+appr´ehender les objectifs commerciaux li ´es `a la recommandation. Apr `es cela, nous
+avons effectu´e une collecte et une pr ´eparation minutieuses des donn ´ees, y compris
+le nettoyage, l’enrichissement, l’agr´egation des informations pertinentes et leur mise
+en forme pour r ´epondre aux exigences du Machine Learning. Gr ˆace `a ce traite-
+ment, on a pu ´elaborer une table de faits centralis ´ee qui int `egre plusieurs dimen-
+sions explicatives (consommation, revenu, type de client, anciennet ´e, etc.). La phase
+suivante a port ´e sur l’exp´erimentation de plusieurs algorithmes de classification su-
+pervis ´ee, notamment Random Forest, XGBoost et AdaBoost. Ces mod `eles ont ´et´e
+´evalu´es `a l’aide d’un ensemble de m´etriques classiques (Accuracy, Precision, Recall,
+F1-Score) et d’outils visuels (matrice de confusion, courbes d’erreur, tableaux com-
+paratifs). Le mod `ele s´electionn´e a ensuite ´et´e int´egr´e dans un syst`eme de recomman-
+dation semi-automatis´e, capable de sugg´erer l’offre la plus adapt´ee `a un client donn´e,
+selon les donn ´ees en entr ´ee. Pour r ´ecapituler, ce projet a atteint ses objectifs initi-
+aux en prouvant la faisabilit´e et l’efficacit´e d’un syst`eme de recommandation bas ´e sur
+67
+
+===== PAGE 78 =====
+l’apprentissage automatique, pour personnaliser les offres. Cela marque le d´ebut d’une
+exploitation plus avanc´ee des donn ´ees clients, et ouvre de nombreuses perspectives
+d’am´elioration pour le futur. Parmi celles-ci, on peut citer l’int ´egration de donn ´ees en
+temps r ´eel (streaming), l’adoption d’architectures hybrides combinant apprentissage
+supervis ´e et non supervis´e, le recours `a des syst`emes de recommandation collaborat-
+ifs, ou encore l’ajout d’un module d’auto-apprentissage pour affiner les suggestions au
+fil du temps.
+68
+
+===== PAGE 79 =====
+R´ef`erences
+[1] Aitouche, S., Kaanit, A., Mouss, K., Mouss, M. D. (2011, June). Proposed
+decision support in a disturbed environment using the method GIMSI. In 2011 IEEE
+International Conference on Computer Science and Automation Engineering (Vol. 4,
+pp. 583-590). IEEE.
+[2] Moro, S., Laureano, R., Cortez, P . (2011). Using data mining for bank direct mar-
+keting: An application of the crisp-dm methodology.
+[3] Code, V. S. (2019). Visual studio code. Recuperado el Octubre de.
+[4] Johnson, B. (2012). Professional visual studio 2012. John Wiley Sons.
+[5] Dao, T., Gu, A. (2024). Transformers are ssms: Generalized models and efficient
+algorithms through structured state space duality. arXiv preprint arXiv:2405.21060.
+[6] Bisong, E. (2019). Google colaboratory. In Building machine learning and deep
+learning models on google cloud platform: a comprehensive guide for beginners (pp.
+59-64). Berkeley, CA: Apress.
+[7] Vitt, E., Anand, T. K., Berger, S. A., Dumitru, M., Jacobsen, E., Melomed, E., ...
+To, A. (2007). Microsoft sql server 2005 analysis services performance guide. White
+Paper, White Paper, 116.
+[8]Carlisle, S. (2018). Software: Tableau and microsoft power bi. Technology— Archi-
+tecture+ Design, 2(2), 256-259.
+[9] Python, W. (2021). Python. Python releases for windows, 24.
+[10] Shar, L. K., Tan, H. B. K. (2012). Defeating SQL injection. Computer, 46(3), 69-77.
+[11]Zemke, F . (2012). What. s new in SQL: 2011. ACM SIGMOD Record, 41(1), 67-73.
+69
+
+===== PAGE 80 =====
+BIBLIOGRAPHIE
